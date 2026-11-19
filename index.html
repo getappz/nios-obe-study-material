@@ -14,96 +14,542 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://getappz.github.io/nios-obe-study-material/assets/og.png">
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#1b1f24;--mute:#5f6b7a;--line:#e1e5ea;--accent:#0b6b4f;--accent-ink:#fff;--chip:#eaf4f0;--warn:#8a5a00;--wa:#1faa59}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1318;--card:#171c23;--ink:#e8ebef;--mute:#9aa6b4;--line:#27303a;--accent:#3ec59a;--accent-ink:#06261c;--chip:#16302a;--warn:#e0b050;--wa:#2bd073}}
+:root{
+  color-scheme:light dark;
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --surface-alt:#f1f5f9;
+  --ink:#0f172a;
+  --ink-2:#475569;
+  --ink-3:#64748b;
+  --line:#e2e8f0;
+  --line-strong:#cbd5e1;
+  --accent:#1d4ed8;
+  --accent-hover:#1e40af;
+  --accent-ink:#ffffff;
+  --accent-soft:#eff6ff;
+  --accent-border:#bfdbfe;
+  --warn:#9a3412;
+  --warn-soft:#fff7ed;
+  --wa:#15803d;
+  --wa-hover:#166534;
+  --wa-ink:#ffffff;
+  --shadow-drawer:0 -8px 24px rgba(15,23,42,.12);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0b0e14;
+    --surface:#12161f;
+    --surface-alt:#1a202c;
+    --ink:#f1f5f9;
+    --ink-2:#cbd5e1;
+    --ink-3:#94a3b8;
+    --line:#232a38;
+    --line-strong:#333d4f;
+    --accent:#60a5fa;
+    --accent-hover:#93c5fd;
+    --accent-ink:#0b1120;
+    --accent-soft:#172554;
+    --accent-border:#1e3a8a;
+    --warn:#fdba74;
+    --warn-soft:#2a1810;
+    --wa:#22c55e;
+    --wa-hover:#4ade80;
+    --wa-ink:#052e16;
+    --shadow-drawer:0 -8px 28px rgba(0,0,0,.55);
+  }
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif}
-a{color:var(--accent)}
-header{padding:20px 16px 8px;max-width:1180px;margin:0 auto}
-h1{margin:0 0 4px;font-size:1.5rem}
-header p{margin:0;color:var(--mute);font-size:.95rem}
-main{max-width:1180px;margin:0 auto;padding:8px 16px 120px;display:grid;gap:16px;grid-template-columns:1fr}
-@media (min-width:920px){main{grid-template-columns:1fr 340px;padding-bottom:40px}}
-.filters{display:grid;gap:8px;grid-template-columns:1fr 1fr;margin-bottom:10px}
-.filters input{grid-column:1/-1}
+html{
+  -webkit-text-size-adjust:100%;
+  accent-color:var(--accent);
+  scrollbar-color:var(--line-strong) transparent;
+  scrollbar-width:thin;
+}
+::selection{background:var(--accent-soft);color:var(--ink)}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif;
+  caret-color:var(--accent);
+}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent-hover)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* Header */
+header{
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  padding:20px 0 18px;
+}
+.head-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  flex-wrap:wrap;
+}
+h1{
+  margin:0 0 4px;
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.2;
+}
+header p.sub{
+  margin:0;
+  color:var(--ink-2);
+  font-size:.93rem;
+  max-width:68ch;
+}
+.head-links{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:.86rem;
+  color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
+}
+
+/* Main two-column workspace */
+main{
+  padding:20px 0 112px;
+  display:grid;
+  gap:20px;
+  grid-template-columns:1fr;
+}
+@media (min-width:940px){
+  main{
+    grid-template-columns:minmax(0,1fr) 340px;
+    padding-bottom:48px;
+    align-items:start;
+  }
+}
+
+/* Search & Filter Toolbar */
+.toolbar{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px;
+  margin-bottom:12px;
+}
+.search-box{
+  position:relative;
+  margin-bottom:8px;
+}
+.search-box .ico-search{
+  position:absolute;
+  left:11px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--ink-3);
+  pointer-events:none;
+}
+.search-box kbd{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  font:11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:var(--ink-3);
+  border:1px solid var(--line);
+  background:var(--surface-alt);
+  border-radius:4px;
+  padding:3px 6px;
+  pointer-events:none;
+}
+@media (max-width:640px){.search-box kbd{display:none}}
+.filters{
+  display:grid;
+  gap:8px;
+  grid-template-columns:1fr 1fr;
+}
+@media (min-width:640px){
+  .filters{grid-template-columns:1fr 1fr 1.2fr}
+}
 input,select,button{font:inherit;color:inherit}
-input[type=search],select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
-button{cursor:pointer;border:1px solid var(--line);background:var(--card);padding:8px 12px;border-radius:10px}
-button:hover{border-color:var(--accent)}
-button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
-button.wa{background:var(--wa);border-color:var(--wa);color:#06210f;font-weight:600}
-button:disabled{opacity:.5;cursor:not-allowed}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 10px;color:var(--mute);font-size:.9rem;flex-wrap:wrap}
+input[type=search],select{
+  width:100%;
+  height:38px;
+  padding:0 12px;
+  border:1px solid var(--line-strong);
+  border-radius:6px;
+  background:var(--bg);
+  color:var(--ink);
+  transition:border-color .15s ease,background-color .15s ease;
+}
+input[type=search]{padding-left:34px;padding-right:34px;font-size:.93rem}
+input[type=search]::placeholder{color:var(--ink-3)}
+input[type=search]:focus,select:focus{
+  outline:none;
+  border-color:var(--accent);
+  background:var(--surface);
+}
+select{cursor:pointer;font-size:.88rem}
+
+/* Buttons */
+button,.btn-link{
+  cursor:pointer;
+  height:34px;
+  padding:0 11px;
+  border:1px solid var(--line-strong);
+  border-radius:6px;
+  background:var(--surface);
+  color:var(--ink);
+  font-size:.86rem;
+  font-weight:500;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+  transition:background-color .14s ease,border-color .14s ease,color .14s ease;
+}
+button:hover:not(:disabled),.btn-link:hover{
+  background:var(--surface-alt);
+  border-color:var(--ink-3);
+  color:var(--ink);
+}
+button:active:not(:disabled){transform:translateY(1px)}
+button.primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--accent-ink);
+  font-weight:600;
+}
+button.primary:hover:not(:disabled){
+  background:var(--accent-hover);
+  border-color:var(--accent-hover);
+  color:var(--accent-ink);
+}
+button.wa{
+  background:var(--wa);
+  border-color:var(--wa);
+  color:var(--wa-ink);
+  font-weight:600;
+}
+button.wa:hover:not(:disabled){
+  background:var(--wa-hover);
+  border-color:var(--wa-hover);
+  color:var(--wa-ink);
+}
+button.ghost{
+  border-color:transparent;
+  background:transparent;
+  color:var(--ink-2);
+}
+button.ghost:hover:not(:disabled){
+  background:var(--surface-alt);
+  border-color:transparent;
+  color:var(--ink);
+}
+button:disabled{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+svg.ico{width:15px;height:15px;flex-shrink:0;display:block}
+
+/* Results Bar */
+.bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin:0 0 8px;
+  padding:0 2px;
+  color:var(--ink-2);
+  font-size:.86rem;
+  font-variant-numeric:tabular-nums;
+  flex-wrap:wrap;
+}
+.bar-actions{display:flex;gap:8px;align-items:center}
+
+/* Catalog Table-List */
 ul{list-style:none;margin:0;padding:0}
-.item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
-.item .t{font-weight:600}
-.meta{color:var(--mute);font-size:.82rem;margin-top:2px;word-break:break-word}
-.badge{display:inline-block;background:var(--chip);color:var(--accent);border-radius:999px;padding:0 8px;font-size:.75rem;margin-left:6px;vertical-align:1px}
-.badge.big{color:var(--warn)}
+#list{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+}
+.item{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  padding:11px 14px;
+  border-bottom:1px solid var(--line);
+  transition:background-color .12s ease;
+}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--surface-alt)}
 .item .body{flex:1;min-width:0}
-.item .act{display:flex;gap:6px;flex-shrink:0}
-.item button{padding:6px 10px;font-size:.9rem}
-.item button.in{background:var(--chip);border-color:var(--accent);color:var(--accent)}
-aside{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;align-self:start}
-@media (min-width:920px){aside{position:sticky;top:16px}.mobileonly{display:none}}
-@media (max-width:919px){aside{position:fixed;left:8px;right:8px;bottom:8px;z-index:5;box-shadow:0 6px 28px #0006;max-height:70vh;overflow:auto}aside.collapsed .full{display:none}}
-aside h2{margin:0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
-.sum{color:var(--mute);font-size:.9rem;margin:4px 0 10px}
-.cartlist{max-height:240px;overflow:auto;margin:0 0 10px}
-.cartlist li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.88rem}
-.cartlist button{padding:0 8px;line-height:1.4}
+.item .t{
+  font-weight:600;
+  font-size:.94rem;
+  line-height:1.35;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px 10px;
+  color:var(--ink-3);
+  font-size:.81rem;
+  margin-top:3px;
+  font-variant-numeric:tabular-nums;
+}
+.meta span{white-space:nowrap}
+.meta .fname{
+  white-space:normal;
+  word-break:break-all;
+  color:var(--ink-3);
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  background:var(--accent-soft);
+  color:var(--accent);
+  border:1px solid var(--accent-border);
+  border-radius:4px;
+  padding:1px 6px;
+  font-size:.73rem;
+  font-weight:600;
+  line-height:1.3;
+}
+.badge.big{
+  background:var(--warn-soft);
+  color:var(--warn);
+  border-color:transparent;
+}
+.item .act{display:flex;gap:6px;flex-shrink:0;align-items:center}
+.item .act button,.item .act .btn-link{height:32px;padding:0 10px;font-size:.82rem}
+.item button.in{
+  background:var(--accent-soft);
+  border-color:var(--accent-border);
+  color:var(--accent);
+  font-weight:600;
+}
+@media (max-width:600px){
+  .item{flex-direction:column;align-items:stretch;gap:10px}
+  .item .act{justify-content:flex-end}
+}
+
+/* Skeleton & Empty States */
+.skel{padding:14px;border-bottom:1px solid var(--line)}
+.skel:last-child{border-bottom:none}
+.skel-line{height:13px;border-radius:4px;background:var(--surface-alt);margin-bottom:8px}
+.skel-line.short{width:46%;height:10px;margin-bottom:0}
+.empty{padding:32px 18px;text-align:center;color:var(--ink-2);font-size:.92rem}
+.empty p{margin:0 0 12px}
+.more-wrap{text-align:center;margin-top:14px}
+
+/* Download List Sidebar / Mobile Sheet */
+aside{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:14px;
+  align-self:start;
+}
+@media (min-width:940px){
+  aside{position:sticky;top:18px}
+  .mobileonly{display:none}
+}
+@media (max-width:939px){
+  aside{
+    position:fixed;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    z-index:20;
+    box-shadow:var(--shadow-drawer);
+    border-color:var(--line-strong);
+    max-height:74vh;
+    overflow:auto;
+  }
+  aside.collapsed .full{display:none}
+}
+aside h2{
+  margin:0;
+  font-size:1.05rem;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.count-pill{
+  font-size:.78rem;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  background:var(--accent-soft);
+  color:var(--accent);
+  padding:2px 8px;
+  border-radius:999px;
+  margin-left:6px;
+}
+.sum{
+  color:var(--ink-2);
+  font-size:.84rem;
+  margin:4px 0 10px;
+  font-variant-numeric:tabular-nums;
+}
+.cartlist{
+  max-height:240px;
+  overflow:auto;
+  margin:0 0 12px;
+  border-top:1px solid var(--line);
+}
+.cartlist:empty{display:none}
+.cartlist li{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:8px;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  font-size:.84rem;
+  line-height:1.35;
+}
+.cartlist li .c-size{color:var(--ink-3);font-size:.78rem;font-variant-numeric:tabular-nums;margin-left:4px}
+.cartlist button{
+  height:26px;
+  width:26px;
+  padding:0;
+  border-color:transparent;
+  background:transparent;
+  color:var(--ink-3);
+}
+.cartlist button:hover{color:var(--ink);background:var(--surface-alt)}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .row button{flex:1 1 auto}
-.note{font-size:.8rem;color:var(--mute);margin-top:8px}
-.banner{background:var(--chip);border:1px solid var(--accent);border-radius:12px;padding:10px 12px;margin-bottom:10px}
-#status{min-height:1.2em;font-size:.88rem;color:var(--accent);margin-top:8px}
-footer{max-width:1180px;margin:0 auto;padding:0 16px 140px;color:var(--mute);font-size:.82rem}
+.note{
+  font-size:.78rem;
+  line-height:1.45;
+  color:var(--ink-3);
+  margin:12px 0 0;
+  padding-top:10px;
+  border-top:1px solid var(--line);
+}
+.banner{
+  background:var(--accent-soft);
+  border:1px solid var(--accent-border);
+  border-radius:8px;
+  padding:10px 14px;
+  margin-bottom:12px;
+  font-size:.88rem;
+}
+#status{
+  min-height:1.2em;
+  font-size:.82rem;
+  color:var(--accent);
+  margin-top:10px;
+  font-weight:500;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:16px 0 104px;
+  color:var(--ink-3);
+  font-size:.82rem;
+  line-height:1.5;
+}
+@media (min-width:940px){footer{padding-bottom:32px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <header>
-  <h1>📚 NIOS Open Basic Education — study material</h1>
-  <p>Unofficial mirror of NIOS material, with fonts fixed for printing. Search, add files to your list, download them all at once.
-     <a href="https://github.com/getappz/nios-obe-study-material#readme">README &amp; copyright</a></p>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <h1>NIOS Open Basic Education study material</h1>
+        <p class="sub">Unofficial mirror with fonts fixed for printing. Search by subject, level, or medium, build a list, and download everything at once.</p>
+      </div>
+      <div class="head-links">
+        <span id="totalBadge">Loading catalog</span>
+        <a href="https://github.com/getappz/nios-obe-study-material#readme">README &amp; copyright</a>
+      </div>
+    </div>
+  </div>
 </header>
-<main>
-  <section aria-label="Search">
-    <div id="banner"></div>
-    <div class="filters">
-      <input id="q" type="search" placeholder="Search e.g. maths level c, yoga, veda chapter 3, इतिहास…" autocomplete="off" aria-label="Search files">
-      <select id="fMed" aria-label="Medium / programme"></select>
-      <select id="fLvl" aria-label="Level"></select>
-      <select id="fSub" aria-label="Subject" style="grid-column:1/-1"></select>
-    </div>
-    <div class="bar"><span id="count"></span><span><button id="addAll" type="button">＋ Add all results</button></span></div>
-    <ul id="list"></ul>
-    <p style="text-align:center"><button id="more" type="button" hidden>Show more</button></p>
-    <noscript>This page needs JavaScript. You can also browse the <a href="https://github.com/getappz/nios-obe-study-material">repository</a>.</noscript>
-  </section>
 
-  <aside id="cart" class="collapsed" aria-label="Download list">
-    <h2><span>🛒 My downloads (<span id="n">0</span>)</span><button id="toggle" type="button" class="mobileonly" aria-expanded="false">▲</button></h2>
-    <div class="sum" id="sum">Nothing added yet.</div>
-    <div class="full">
-      <ul class="cartlist" id="cartlist"></ul>
-      <div class="row">
-        <button id="dlAll" class="primary" type="button" disabled>⬇ Download all</button>
-        <button id="dlList" type="button" disabled>Download link list (.txt)</button>
+<div class="wrap">
+  <main>
+    <section aria-label="Catalog search">
+      <div id="banner"></div>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <svg class="ico ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="q" type="search" placeholder="Search e.g. maths level c, yoga, veda chapter 3, इतिहास…" autocomplete="off" aria-label="Search files">
+          <kbd title="Press / to focus search">/</kbd>
+        </div>
+        <div class="filters">
+          <select id="fMed" aria-label="Medium / programme"></select>
+          <select id="fLvl" aria-label="Level"></select>
+          <select id="fSub" aria-label="Subject"></select>
+        </div>
       </div>
-      <div class="row">
-        <button id="wa" class="wa" type="button" disabled>Share on WhatsApp</button>
-        <button id="copy" type="button" disabled>Copy link</button>
-        <button id="native" type="button" hidden disabled>Share…</button>
+
+      <div class="bar">
+        <span id="count">Loading files…</span>
+        <div class="bar-actions">
+          <button id="resetFilters" class="ghost" type="button" hidden>Reset filters</button>
+          <button id="addAll" type="button" disabled>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Add all results
+          </button>
+        </div>
       </div>
-      <div class="row"><button id="clear" type="button" disabled>Clear list</button></div>
-      <div id="status" role="status" aria-live="polite"></div>
-      <p class="note">“Download all” starts the downloads one after another — your browser may ask once to allow multiple downloads. Large files (marked ⬇ release) can be 50–140&nbsp;MB.
-        The share link contains your selection, so whoever opens it gets the same list.</p>
-    </div>
-  </aside>
-</main>
-<footer>© NIOS. Material reproduced under the <a href="https://nios.ac.in/terms-conditions.aspx">NIOS copyright statement</a>; this is an unofficial mirror. Always check <a href="https://nios.ac.in">nios.ac.in</a> for the latest edition.</footer>
+
+      <ul id="list">
+        <li class="skel"><div class="skel-line" style="width:68%"></div><div class="skel-line short"></div></li>
+        <li class="skel"><div class="skel-line" style="width:54%"></div><div class="skel-line short"></div></li>
+        <li class="skel"><div class="skel-line" style="width:74%"></div><div class="skel-line short"></div></li>
+      </ul>
+      <p class="more-wrap"><button id="more" type="button" hidden>Show more</button></p>
+      <noscript>This page needs JavaScript. You can also browse the <a href="https://github.com/getappz/nios-obe-study-material">repository</a>.</noscript>
+    </section>
+
+    <aside id="cart" class="collapsed" aria-label="Download list">
+      <h2>
+        <span>Download list <span class="count-pill" id="n">0</span></span>
+        <button id="toggle" type="button" class="mobileonly" aria-expanded="false" aria-label="Toggle download list">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+      </h2>
+      <div class="sum" id="sum">Nothing added yet.</div>
+      <div class="full">
+        <ul class="cartlist" id="cartlist"></ul>
+        <div class="row">
+          <button id="dlAll" class="primary" type="button" disabled>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download all
+          </button>
+          <button id="dlList" type="button" disabled>Link list (.txt)</button>
+        </div>
+        <div class="row">
+          <button id="wa" class="wa" type="button" disabled>WhatsApp</button>
+          <button id="copy" type="button" disabled>Copy link</button>
+          <button id="native" type="button" hidden disabled>Share…</button>
+        </div>
+        <div class="row"><button id="clear" class="ghost" type="button" disabled>Clear list</button></div>
+        <div id="status" role="status" aria-live="polite"></div>
+        <p class="note">“Download all” starts downloads sequentially — your browser may ask once to allow multiple files. Files marked <strong>large</strong> (50–140&nbsp;MB) are served from GitHub Releases. Shared links preserve your selection.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    © NIOS. Material reproduced under the <a href="https://nios.ac.in/terms-conditions.aspx">NIOS copyright statement</a>; this is an unofficial mirror. Always check <a href="https://nios.ac.in">nios.ac.in</a> for the latest edition.
+  </footer>
+</div>
 
 <script>
 const REL_BASE = "https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/";
@@ -115,6 +561,15 @@ const $ = id => document.getElementById(id);
 const fmt = b => b >= 1e6 ? (b/1e6).toFixed(b >= 1e7 ? 0 : 1) + " MB" : Math.max(1, Math.round(b/1e3)) + " KB";
 const hash53 = s => { let h1=0xdeadbeef,h2=0x41c6ce57; for (let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)} h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(36)};
 const pretty = f => f.replace(/\.pdf$/i,"").replace(/[_-]+/g," ").trim();
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const ICO = {
+  plus: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>`,
+  check: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`,
+  x: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>`,
+  up: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>`,
+  down: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`
+};
 
 let items = [], byId = new Map(), cart = new Set(), shown = PAGE_SIZE, filtered = [];
 
@@ -138,59 +593,93 @@ function parse(e) {
 }
 
 function fillSelect(sel, label, values, fmtv) {
-  const cur = sel.value; sel.innerHTML = `<option value="">${label}</option>` + values.map(v => `<option value="${v}">${fmtv(v)}</option>`).join(""); if (values.includes(cur)) sel.value = cur;
+  const cur = sel.value;
+  sel.innerHTML = `<option value="">${label}</option>` + values.map(v => `<option value="${v}">${fmtv(v)}</option>`).join("");
+  if (values.includes(cur)) sel.value = cur;
 }
+
 function refreshFilters() {
   fillSelect($("fMed"), "All media / programmes", [...new Set(items.map(i => i.medium))].sort(), v => v);
   fillSelect($("fLvl"), "All levels", ["a","b","c"], v => LVL[v]);
   const pool = items.filter(i => (!$("fMed").value || i.medium === $("fMed").value) && (!$("fLvl").value || i.level === $("fLvl").value));
   fillSelect($("fSub"), "All subjects", [...new Set(pool.map(i => i.subject))].sort((a,b) => (SUBJ[a]||a).localeCompare(SUBJ[b]||b)), v => SUBJ[v] || v);
 }
+
+function resetAllFilters() {
+  $("q").value = ""; $("fMed").value = ""; $("fLvl").value = ""; $("fSub").value = "";
+  refreshFilters(); applyFilters();
+}
+
 function applyFilters(resetPage = true) {
-  const toks = $("q").value.toLowerCase().replace(/\b(?:level|lvl)\s*([abc])\b/g, "lvl$1").split(/\s+/).filter(Boolean).map(w => w === "maths" ? "math" : w);
+  const rawQ = $("q").value;
+  const toks = rawQ.toLowerCase().replace(/\b(?:level|lvl)\s*([abc])\b/g, "lvl$1").split(/\s+/).filter(Boolean).map(w => w === "maths" ? "math" : w);
   filtered = items.filter(i => (!$("fMed").value || i.medium === $("fMed").value) && (!$("fLvl").value || i.level === $("fLvl").value) &&
     (!$("fSub").value || i.subject === $("fSub").value) && toks.every(t => i.hay.includes(t)));
+  $("resetFilters").hidden = !(rawQ || $("fMed").value || $("fLvl").value || $("fSub").value);
   if (resetPage) shown = PAGE_SIZE;
   renderList();
 }
+
 function renderList() {
   const part = filtered.slice(0, shown);
-  $("list").innerHTML = part.map(i => `<li class="item"><div class="body"><div class="t">${esc(i.title)}${i.lang ? `<span class="badge">${i.lang}</span>` : ""}${i.release ? `<span class="badge big">large</span>` : ""}</div>
-    <div class="meta">${esc(i.medium)} · ${LVL[i.level] || ""} · ${fmt(i.size)} · ${esc(i.file)}</div></div>
-    <div class="act"><button type="button" data-share="${i.id}" title="Share this file on WhatsApp" aria-label="Share ${esc(i.title)} on WhatsApp">↗</button>
-    <button type="button" data-add="${i.id}" class="${cart.has(i.id) ? "in" : ""}">${cart.has(i.id) ? "✓ Added" : "＋ Add"}</button></div></li>`).join("") || `<li class="meta">No files match.</li>`;
+  $("list").innerHTML = part.map(i => `<li class="item">
+    <div class="body">
+      <div class="t"><span>${esc(i.title)}</span>${i.lang ? `<span class="badge">${i.lang}</span>` : ""}${i.release ? `<span class="badge big">large</span>` : ""}</div>
+      <div class="meta"><span>${esc(i.medium)}</span><span>${LVL[i.level] || ""}</span><span>${fmt(i.size)}</span><span class="fname">${esc(i.file)}</span></div>
+    </div>
+    <div class="act">
+      <a class="btn-link" href="${i.url}" target="_blank" rel="noopener">Open PDF</a>
+      <button type="button" data-share="${i.id}" title="Share this file on WhatsApp" aria-label="Share ${esc(i.title)} on WhatsApp">Share</button>
+      <button type="button" data-add="${i.id}" class="${cart.has(i.id) ? "in" : ""}">${cart.has(i.id) ? `${ICO.check} Added` : `${ICO.plus} Add`}</button>
+    </div>
+  </li>`).join("") || `<li class="empty"><p>No files match your current search or filters.</p><button type="button" data-reset="1">Reset all filters</button></li>`;
   $("count").textContent = `${filtered.length} file${filtered.length === 1 ? "" : "s"}`;
   $("more").hidden = filtered.length <= shown;
   $("addAll").disabled = !filtered.length;
 }
-const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 function save() { try { localStorage.setItem("nios-cart", JSON.stringify([...cart])); } catch {} }
+
 function renderCart() {
   const sel = [...cart].map(id => byId.get(id)).filter(Boolean), total = sel.reduce((s,i) => s + i.size, 0);
   $("n").textContent = sel.length;
-  $("sum").textContent = sel.length ? `${sel.length} file${sel.length === 1 ? "" : "s"} · ${fmt(total)}` : "Nothing added yet.";
-  $("cartlist").innerHTML = sel.map(i => `<li><span>${esc(i.title)}${i.lang ? " (" + i.lang + ")" : ""} <span class="meta">${fmt(i.size)}</span></span><button type="button" data-rm="${i.id}" aria-label="Remove ${esc(i.title)}">✕</button></li>`).join("");
+  $("sum").textContent = sel.length ? `${sel.length} file${sel.length === 1 ? "" : "s"} (${fmt(total)})` : "Nothing added yet.";
+  $("cartlist").innerHTML = sel.map(i => `<li><span>${esc(i.title)}${i.lang ? " (" + i.lang + ")" : ""}<span class="c-size">${fmt(i.size)}</span></span><button type="button" data-rm="${i.id}" aria-label="Remove ${esc(i.title)}">${ICO.x}</button></li>`).join("");
   for (const id of ["dlAll","dlList","wa","copy","native","clear"]) $(id).disabled = !sel.length;
   renderList(); save();
 }
+
 const add = ids => { ids.forEach(id => byId.has(id) && cart.add(id)); renderCart(); };
 const shareLink = ids => `${location.origin}${location.pathname}#cart=${ids.join(",")}`;
 const waUrl = (text, link) => `https://wa.me/?text=${encodeURIComponent(text + "\n" + link)}`;
 const status = t => $("status").textContent = t;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+document.addEventListener("keydown", ev => {
+  if (ev.key === "/" && !/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+    ev.preventDefault();
+    $("q").focus();
+  }
+});
+
 document.addEventListener("click", async ev => {
   const b = ev.target.closest("button"); if (!b) return;
   if (b.dataset.add) { cart.has(b.dataset.add) ? cart.delete(b.dataset.add) : cart.add(b.dataset.add); renderCart(); }
   else if (b.dataset.rm) { cart.delete(b.dataset.rm); renderCart(); }
+  else if (b.dataset.reset) { resetAllFilters(); }
   else if (b.dataset.share) { const i = byId.get(b.dataset.share); open(waUrl(`📚 NIOS study material: ${i.title} (${fmt(i.size)})`, shareLink([i.id])), "_blank", "noopener"); }
 });
+
 $("addAll").onclick = () => add(filtered.map(i => i.id));
 $("more").onclick = () => { shown += PAGE_SIZE; renderList(); };
 $("clear").onclick = () => { cart.clear(); renderCart(); status(""); };
-$("toggle").onclick = () => { const c = $("cart").classList.toggle("collapsed"); $("toggle").setAttribute("aria-expanded", String(!c)); $("toggle").textContent = c ? "▲" : "▼"; };
-["q"].forEach(id => $(id).addEventListener("input", () => applyFilters()));
+$("resetFilters").onclick = resetAllFilters;
+$("toggle").onclick = () => {
+  const c = $("cart").classList.toggle("collapsed");
+  $("toggle").setAttribute("aria-expanded", String(!c));
+  $("toggle").innerHTML = c ? ICO.up : ICO.down;
+};
+$("q").addEventListener("input", () => applyFilters());
 ["fMed","fLvl"].forEach(id => $(id).addEventListener("change", () => { refreshFilters(); applyFilters(); }));
 $("fSub").addEventListener("change", () => applyFilters());
 
@@ -203,11 +692,13 @@ $("dlAll").onclick = async () => {
   }
   status(`All ${sel.length} downloads started — check your browser's downloads.`); $("dlAll").disabled = !cart.size;
 };
+
 $("dlList").onclick = () => {
   const sel = [...cart].map(id => byId.get(id)).filter(Boolean);
   const text = "# NIOS study material — download list (use with: wget -i nios-downloads.txt)\n" + sel.map(i => new URL(i.url, location.href).href).join("\n") + "\n";
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], {type: "text/plain"})); a.download = "nios-downloads.txt"; a.click(); URL.revokeObjectURL(a.href);
 };
+
 const cartMsg = () => { const sel = [...cart].map(id => byId.get(id)).filter(Boolean); return `📚 NIOS study material — ${sel.length} file${sel.length === 1 ? "" : "s"} (${fmt(sel.reduce((s,i) => s + i.size, 0))})`; };
 $("wa").onclick = () => open(waUrl(cartMsg(), shareLink([...cart])), "_blank", "noopener");
 $("copy").onclick = async () => { const l = shareLink([...cart]); try { await navigator.clipboard.writeText(l); status("Link copied."); } catch { prompt("Copy this link:", l); } };
@@ -217,13 +708,21 @@ if (navigator.share) { $("native").hidden = false; $("native").onclick = () => n
   try {
     const m = await (await fetch("data/manifest.json", {cache: "no-cache"})).json();
     items = Object.values(m).filter(e => !e.dead).map(parse).sort((a, b) => a.rel.localeCompare(b.rel));
-  } catch (e) { $("list").innerHTML = `<li class="meta">Could not load the file list (${esc(String(e))}). Browse the <a href="https://github.com/getappz/nios-obe-study-material">repository</a> instead.</li>`; return; }
+    $("totalBadge").textContent = `${items.length} PDFs`;
+  } catch (e) {
+    $("totalBadge").textContent = "Catalog unavailable";
+    $("list").innerHTML = `<li class="empty"><p>Could not load the file list (${esc(String(e))}).</p><p>Browse the <a href="https://github.com/getappz/nios-obe-study-material">GitHub repository</a> instead.</p></li>`;
+    return;
+  }
   items.forEach(i => byId.set(i.id, i));
   try { JSON.parse(localStorage.getItem("nios-cart") || "[]").forEach(id => byId.has(id) && cart.add(id)); } catch {}
   const shared = (location.hash.match(/^#cart=([\w,]+)/) || [])[1];
-  if (shared) { const ids = shared.split(",").filter(id => byId.has(id)); ids.forEach(id => cart.add(id));
-    $("banner").innerHTML = `<div class="banner">A shared list was opened: <b>${ids.length}</b> file${ids.length === 1 ? "" : "s"} added to your downloads. Press “Download all” on the right${innerWidth < 920 ? " (tap the bar at the bottom)" : ""}.</div>`;
-    if (innerWidth < 920) $("toggle").click(); history.replaceState(null, "", location.pathname); }
+  if (shared) {
+    const ids = shared.split(",").filter(id => byId.has(id)); ids.forEach(id => cart.add(id));
+    $("banner").innerHTML = `<div class="banner">A shared list was opened: <b>${ids.length}</b> file${ids.length === 1 ? "" : "s"} added to your downloads. Press “Download all” on the right${innerWidth < 940 ? " (tap the bar at the bottom)" : ""}.</div>`;
+    if (innerWidth < 940) $("toggle").click();
+    history.replaceState(null, "", location.pathname);
+  }
   refreshFilters(); applyFilters(); renderCart();
 })();
 </script>
