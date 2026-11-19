@@ -328,7 +328,7 @@ def main():
             continue
         if a.only and a.only not in it["url"]:
             continue
-        if a.force or not old or old["sig"] != sig or old["rel"] != it["rel"]:
+        if a.force or not old or (not old.get("dead") and (old["sig"] != sig or old["rel"] != it["rel"])):
             todo.append(it)
     gone = [u for u in man if u not in {i["url"] for i in items}]
     print(f"to (re)process: {len(todo)} | unavailable now: {len(unavailable)} | no longer listed: {len(gone)}")
