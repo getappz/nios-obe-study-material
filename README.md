@@ -1,14 +1,14 @@
 # NIOS Open Basic Education (OBE) — study material, print-ready
 
 Unofficial, organised mirror of the **National Institute of Open Schooling (NIOS)** Open Basic Education
-study material — 581 PDFs, laid out the same way as the NIOS page
+study material — 578 PDFs, laid out the same way as the NIOS page
 [Open Basic Education → Study Material](https://nios.ac.in/departmentsunits/academic/open-basic-education-(obe)/obesimen.aspx):
 **Medium → Level (A / B / C) → Subject**, plus *Indian Knowledge Tradition* and sample question papers.
 
 > **This is NIOS material, not ours.** © The National Institute of Open Schooling. Every row below links back to the
 > original on nios.ac.in. Check the NIOS site for the latest official editions.
 
-> 🕒 **Last checked against NIOS: 2026-11-19 08:43 UTC** · **Newest file change: 2026-11-19 08:43 UTC**  
+> 🕒 **Last checked against NIOS: 2026-11-19 08:53 UTC** · **Newest file change: 2026-11-19 08:22 UTC**  
 > If the check date is recent, this mirror matches the NIOS page. It is refreshed by the maintainer running the [sync script](tools/sync.py) (see *Updating*) — always compare with the official NIOS site for the latest edition.
 
 **Quick jump:** [English Medium](#english-medium) · [Hindi Medium](#hindi-medium) ·
@@ -291,7 +291,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 </details>
 
-<details><summary><b>Vocational Skills (A149)</b> — 40 files · <a href="indian-knowledge-tradition/level-a/vocational-skills-a149/">browse folder</a></summary>
+<details><summary><b>Vocational Skills (A149)</b> — 39 files · <a href="indian-knowledge-tradition/level-a/vocational-skills-a149/">browse folder</a></summary>
 
 **All / mixed**
 
@@ -310,7 +310,6 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 | [Pre_Voc_(Level-A)_ch-7-final.pdf](indian-knowledge-tradition/level-a/vocational-skills-a149/common/Pre_Voc_%28Level-A%29_ch-7-final.pdf) | 195 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/Pre_Voc_%28Level-A%29_ch-7-final.pdf) |
 | [Pre_Voc_(Level-A)_ch-8-final.pdf](indian-knowledge-tradition/level-a/vocational-skills-a149/common/Pre_Voc_%28Level-A%29_ch-8-final.pdf) | 218 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/Pre_Voc_%28Level-A%29_ch-8-final.pdf) |
 | [Pre_Voc_(Level-A)_ch-9-Final.pdf](indian-knowledge-tradition/level-a/vocational-skills-a149/common/Pre_Voc_%28Level-A%29_ch-9-Final.pdf) | 52 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/Pre_Voc_%28Level-A%29_ch-9-Final.pdf) |
-| [SQP___MS_Vocational_Skills_Level_A.pdf](indian-knowledge-tradition/level-a/vocational-skills-a149/common/SQP___MS_Vocational_Skills_Level_A.pdf) | 132 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_A.pdf) |
 
 **Hindi**
 
@@ -556,7 +555,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 </details>
 
-<details><summary><b>Vocational Skills (B149)</b> — 40 files · <a href="indian-knowledge-tradition/level-b/vocational-skills-b149/">browse folder</a></summary>
+<details><summary><b>Vocational Skills (B149)</b> — 39 files · <a href="indian-knowledge-tradition/level-b/vocational-skills-b149/">browse folder</a></summary>
 
 **All / mixed**
 
@@ -575,7 +574,6 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 | [Pre_Voc_(Level-B)_ch-7-final.pdf](indian-knowledge-tradition/level-b/vocational-skills-b149/common/Pre_Voc_%28Level-B%29_ch-7-final.pdf) | 326 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/Pre_Voc_%28Level-B%29_ch-7-final.pdf) |
 | [Pre_Voc_(Level-B)_ch-8-final.pdf](indian-knowledge-tradition/level-b/vocational-skills-b149/common/Pre_Voc_%28Level-B%29_ch-8-final.pdf) | 357 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/Pre_Voc_%28Level-B%29_ch-8-final.pdf) |
 | [Pre_Voc_(Level-B)_ch-9-final.pdf](indian-knowledge-tradition/level-b/vocational-skills-b149/common/Pre_Voc_%28Level-B%29_ch-9-final.pdf) | 76 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/Pre_Voc_%28Level-B%29_ch-9-final.pdf) |
-| [SQP___MS_Vocational_Skills_Level_B.pdf](indian-knowledge-tradition/level-b/vocational-skills-b149/common/SQP___MS_Vocational_Skills_Level_B.pdf) | 132 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_B.pdf) |
 
 **Hindi**
 
@@ -833,7 +831,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 </details>
 
-<details><summary><b>Vocational Skills (C149)</b> — 40 files · <a href="indian-knowledge-tradition/level-c/vocational-skills-c149/">browse folder</a></summary>
+<details><summary><b>Vocational Skills (C149)</b> — 39 files · <a href="indian-knowledge-tradition/level-c/vocational-skills-c149/">browse folder</a></summary>
 
 **All / mixed**
 
@@ -852,7 +850,6 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 | [Pre-Voc_(Level-C)_ch-7-final.pdf](indian-knowledge-tradition/level-c/vocational-skills-c149/common/Pre-Voc_%28Level-C%29_ch-7-final.pdf) | 209 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/Pre-Voc_%28Level-C%29_ch-7-final.pdf) |
 | [Pre-Voc_(Level-C)_ch-8-final.pdf](indian-knowledge-tradition/level-c/vocational-skills-c149/common/Pre-Voc_%28Level-C%29_ch-8-final.pdf) | 79 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/Pre-Voc_%28Level-C%29_ch-8-final.pdf) |
 | [Pre-Voc_(Level-C)_ch-9-final.pdf](indian-knowledge-tradition/level-c/vocational-skills-c149/common/Pre-Voc_%28Level-C%29_ch-9-final.pdf) | 1.1 MB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/Pre-Voc_%28Level-C%29_ch-9-final.pdf) |
-| [SQP___MS_Vocational_Skills_Level_C.pdf](indian-knowledge-tradition/level-c/vocational-skills-c149/common/SQP___MS_Vocational_Skills_Level_C.pdf) | 132 KB | [NIOS](https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_C.pdf) |
 
 **Hindi**
 
@@ -913,8 +910,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 | **Kruti Dev font embedded** | Files whose headings / Sanskrit verses referenced the Kruti Dev font without embedding it | On computers without that font those lines showed as Latin junk (`ifjp; izLrqfr`). The real Kruti Dev font (published by NIOS itself on the page above) was embedded into the PDF, so the text now renders exactly as intended (`परिचय प्रस्तुति`). No text was retyped or converted. |
 | **Smaller for printing** | Image-heavy PDFs | Images above 300 dpi were reduced to 220 dpi (JPEG q80) so files print sharply but are lighter. Text and layout unchanged. |
 
-Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Two NIOS links were
-dead (HTTP 404) when this was collected: Vijnana B English chapter 11 and Veda C Sanskrit chapter 6. Found an error? Please [open an issue](../../issues).
+Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Five NIOS links were dead when this was collected (they 404 or serve a web page instead of a PDF), so they are not mirrored: Vijnana B English chapter 11, Veda C Sanskrit chapter 6, and the Vocational Skills question papers for Levels A, B and C. Found an error? Please [open an issue](../../issues).
 
 ## Printing tips
 

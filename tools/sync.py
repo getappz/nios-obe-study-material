@@ -52,7 +52,7 @@ def norm(h):
     u = urllib.parse.urljoin(BASE + "/", h)
     if u.count("/media/documents/") > 1:  # NIOS typo: duplicated path
         u = BASE + "/media/documents/" + u.split("/media/documents/")[-1]
-    return urllib.parse.quote(u, safe=":/%?=&")
+    return urllib.parse.quote(u, safe=":/%?=")  # "&" in a file name must be %26
 
 
 MAIN_PDF = re.compile(r"(?i)(Aleveleng|Bleveleng|Cleveleng|ENGAlevel|EngBlevel|engClevel|Level_[ABC]-2023|/[abc]-level)\.pdf$")
@@ -163,6 +163,11 @@ def process_one(args):
     with open(raw, "wb") as o:
         for chunk in r.iter_content(chunk_size=1 << 20):
             o.write(chunk)
+    with open(raw, "rb") as fh:
+        head = fh.read(5)
+    if head != b"%PDF-":  # an error/redirect page saved as .pdf must never reach the repo
+        os.remove(raw)
+        return rel, None
     a = os.path.getsize(raw)
     tmp, fixed = raw + ".out.pdf", 0
     try:
@@ -209,6 +214,7 @@ def fmt(iso):
 
 def gen_readme(repo, man, tag, slugname):
     rel_url = f"https://github.com/{slugname}/releases/download/{tag}/"
+    man = {u: e for u, e in man.items() if not e.get("dead")}
 
     def link(e):
         return rel_url + e["asset"] if e["release"] else urllib.parse.quote(e["rel"], safe="/-_.~")
@@ -322,7 +328,7 @@ def main():
             continue
         if a.only and a.only not in it["url"]:
             continue
-        if a.force or not old or old["sig"] != sig or old["rel"] != it["rel"]:
+        if a.force or not old or (not old.get("dead") and (old["sig"] != sig or old["rel"] != it["rel"])):
             todo.append(it)
     gone = [u for u in man if u not in {i["url"] for i in items}]
     print(f"to (re)process: {len(todo)} | unavailable now: {len(unavailable)} | no longer listed: {len(gone)}")
@@ -336,6 +342,11 @@ def main():
         with cf.ProcessPoolExecutor(a.jobs) as ex:
             for rel, info in ex.map(process_one, [(i["url"], i["rel"], work, fonts, repo) for i in todo]):
                 it = next(i for i in todo if i["rel"] == rel)
+                if info is None:  # NIOS link serves an HTML page, not a PDF: remember it so it is not retried every run
+                    print("WARN not a PDF (dead link), skipped:", it["url"])
+                    man[it["url"]] = {"url": it["url"], "label": it["label"], "rel": rel, "sig": it["sig"], "updated": now(),
+                                      "dead": True, "size": 0, "release": False, "asset": None}
+                    continue
                 old = man.get(it["url"])
                 if old and old["rel"] != rel and not old["release"]:  # moved on the site: drop the old copy
                     op = os.path.join(repo, *old["rel"].split("/"))
