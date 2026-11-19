@@ -1,77 +1,58 @@
-# NIOS Open Basic Education (OBE) — study material, print-ready
+# 📚 NIOS Open Basic Education — study material, print-ready
 
-Unofficial, organised mirror of the **National Institute of Open Schooling (NIOS)** Open Basic Education
-study material — {{COUNT}} PDFs, laid out the same way as the NIOS page
-[Open Basic Education → Study Material]({{SRC}}):
-**Medium → Level (A / B / C) → Subject**, plus *Indian Knowledge Tradition* and sample question papers.
+<p align="center"><a href="https://getappz.github.io/nios-obe-study-material/"><img src="assets/og.png" alt="Search, add to a list and download NIOS study material" width="640"></a></p>
 
-> **This is NIOS material, not ours.** © The National Institute of Open Schooling. Every row below links back to the
-> original on nios.ac.in. Check the NIOS site for the latest official editions.
+## 👉 [Open the search & download site](https://getappz.github.io/nios-obe-study-material/)
 
-> 🕒 **Last checked against NIOS: {{CHECKED}}** · **Newest file change: {{UPDATED}}**  
-> If the check date is recent, this mirror matches the NIOS page. It is refreshed by the maintainer running the [sync script](tools/sync.py) (see *Updating*) — always compare with the official NIOS site for the latest edition.
+Search by subject, level or medium → add files to your list (like a cart) → **download them all at once** or **share the list on WhatsApp**.
 
-### 🌐 [Search, add to a list and download in one go →](https://getappz.github.io/nios-obe-study-material/)
-A small website for this repo: search by subject/level/medium, add files to a download list (like a cart), download them all at once, or share the list on WhatsApp.
+- **{{COUNT}} PDFs** from [NIOS Open Basic Education]({{SRC}}): Levels A, B, C (Class 1–8), English & Hindi medium, Indian Knowledge Tradition (Veda, Vijnana, Yoga, Sanskrit, Vocational Skills) and sample question papers.
+- **Fonts fixed for printing.** Many NIOS PDFs show Hindi/Sanskrit headings and verses as junk (`ifjp; izLrqfr`) on computers without the Kruti Dev font. Here the font is embedded, so they print correctly (`परिचय प्रस्तुति`). Images were also reduced to 220 dpi so files are lighter.
+- **Organised exactly like the NIOS page**: Medium → Level → Subject.
 
-**Quick jump:** [English Medium](#english-medium) · [Hindi Medium](#hindi-medium) ·
-[Indian Knowledge Tradition](#indian-knowledge-tradition-भारतीय-ज्ञान-परम्परा) ·
-[Question papers](#sample-question-papers--question-paper-design) · [What was changed](#what-was-changed-from-the-nios-originals) ·
-[Copyright](#copyright-and-reuse)
+> 🕒 **Last checked against NIOS: {{CHECKED}}** · **Newest file change: {{UPDATED}}**
+> Always compare with the [official NIOS site](https://nios.ac.in) for the latest edition.
 
-**⬇ = large file (10 MB+), hosted as a [GitHub Release asset](../../releases/tag/{{TAG}})** so the repository stays light to clone; everything else is stored in the repository folders.
+## Browse the files
+
+Prefer a plain list? Everything is in **[INDEX.md](INDEX.md)** — every file with size, download link and the NIOS original:
+[English Medium](INDEX.md#english-medium) · [Hindi Medium](INDEX.md#hindi-medium) ·
+[Indian Knowledge Tradition](INDEX.md#indian-knowledge-tradition-भारतीय-ज्ञान-परम्परा) ·
+[Sample question papers](INDEX.md#sample-question-papers--question-paper-design).
+Files of 10 MB or more are attached to the [`{{TAG}}` release](../../releases/tag/{{TAG}}) (marked ⬇) so the repo stays light to clone.
 
 Level guide (NIOS equivalence): **A** = Class 1–3 · **B** = Class 4–5 · **C** = Class 6–8.
-
-{{TABLES}}
 
 ## What was changed from the NIOS originals
 
 | Change | Where | Detail |
 |---|---|---|
-| **Kruti Dev font embedded** | Files whose headings / Sanskrit verses referenced the Kruti Dev font without embedding it | On computers without that font those lines showed as Latin junk (`ifjp; izLrqfr`). The real Kruti Dev font (published by NIOS itself on the page above) was embedded into the PDF, so the text now renders exactly as intended (`परिचय प्रस्तुति`). No text was retyped or converted. |
-| **Smaller for printing** | Image-heavy PDFs | Images above 300 dpi were reduced to 220 dpi (JPEG q80) so files print sharply but are lighter. Text and layout unchanged. |
+| **Kruti Dev font embedded** | Files whose headings / Sanskrit verses referenced the Kruti Dev font without embedding it | The real Kruti Dev font (published by NIOS itself) was embedded, so the text renders exactly as intended. No text was retyped or converted. |
+| **Smaller for printing** | Image-heavy PDFs | Images above 300 dpi were reduced to 220 dpi (JPEG q80). Text and layout unchanged. |
 
-Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Five NIOS links were dead when this was collected (they 404 or serve a web page instead of a PDF), so they are not mirrored: Vijnana B English chapter 11, Veda C Sanskrit chapter 6, and the Vocational Skills question papers for Levels A, B and C. Found an error? Please [open an issue](../../issues).
+Content is otherwise unchanged. Scanned books (Science / Social Science, English medium) have no text layer. Five NIOS links were dead when this was collected (404 or a web page instead of a PDF), so they are not mirrored: Vijnana B English chapter 11, Veda C Sanskrit chapter 6, and the Vocational Skills question papers for Levels A, B and C. Found an error? Please [open an issue](../../issues).
 
 ## Printing tips
 
 - Print at **actual size / 100 %**, not "fit to page".
-- Send the PDF as-is to a print shop — fonts for corrected headings are embedded.
+- Send the PDF as-is to a print shop — fonts are embedded.
 
-## Repository layout
+## Help spread the word
 
-```
-open-basic-education/{english,hindi}-medium/level-{a,b,c}/<subject>/…
-open-basic-education/sample-question-papers/level-{a,b,c}/…
-indian-knowledge-tradition/level-{a,b,c}/<course>-<code>/{hindi,sanskrit,english,common}/…
-tools/    scripts used to prepare the PDFs (font embedding, image shrink)
-```
+If this saved you time, please ⭐ star the repo and share the [site](https://getappz.github.io/nios-obe-study-material/) with other NIOS learners, tutors and study-centre coordinators. Sharing a list from the site gives people exactly the files you picked.
 
-## Tools
+## Maintainers: updating
+
+NIOS blocks GitHub-hosted runners, so updates run on a machine that can reach nios.ac.in:
 
 ```
-pip install pymupdf curl_cffi
-python tools/fix_krutidev.py in.pdf out.pdf <font-dir>   # embed Kruti Dev (font-dir: unzip NIOS's hindi_font_krutidev.zip)
-python tools/optimize.py in.pdf out.pdf                  # shrink images for print
-```
-
-## Updating (maintainer)
-
-NIOS blocks GitHub's hosted runners, so updates run on a machine that can reach nios.ac.in:
-
-```
-mise run sync:check     # what changed on NIOS since the last sync (compares ETag / size / date)
-mise run sync           # re-process changed PDFs, upload 10 MB+ files to the release, update this README, commit, push
+mise run sync:check     # what changed on NIOS since the last sync
+mise run sync           # re-process changed PDFs, upload 10 MB+ files to the release, update README + INDEX, commit, push
 mise run sync:force     # re-process everything
 ```
 
-Without mise: `python tools/sync.py --dry-run` / `--publish` / `--force --publish` (after `pip install pymupdf curl_cffi`).
-
-`python tools/sync.py --only Level_C` limits a run to URLs containing that text. State lives in `data/manifest.json`.
-Needs the [GitHub CLI](https://cli.github.com/) logged in for `--publish`.
-
-Scripts are MIT-licensed; **the PDFs are not** (see below).
+Without mise: `python tools/sync.py --dry-run` / `--publish` (after `pip install pymupdf curl_cffi`). State lives in `data/manifest.json`; the site reads it directly.
+Other tools: `tools/fix_krutidev.py in.pdf out.pdf <font-dir>` (embed Kruti Dev), `tools/optimize.py in.pdf out.pdf` (shrink images). Scripts are MIT-licensed; **the PDFs are not**.
 
 ## Copyright and reuse
 
