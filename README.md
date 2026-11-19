@@ -8,7 +8,7 @@ study material — 578 PDFs, laid out the same way as the NIOS page
 > **This is NIOS material, not ours.** © The National Institute of Open Schooling. Every row below links back to the
 > original on nios.ac.in. Check the NIOS site for the latest official editions.
 
-> 🕒 **Last checked against NIOS: 2026-11-19 08:52 UTC** · **Newest file change: 2026-11-19 08:22 UTC**  
+> 🕒 **Last checked against NIOS: 2026-11-19 08:53 UTC** · **Newest file change: 2026-11-19 08:22 UTC**  
 > If the check date is recent, this mirror matches the NIOS page. It is refreshed by the maintainer running the [sync script](tools/sync.py) (see *Updating*) — always compare with the official NIOS site for the latest edition.
 
 **Quick jump:** [English Medium](#english-medium) · [Hindi Medium](#hindi-medium) ·
@@ -910,8 +910,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 | **Kruti Dev font embedded** | Files whose headings / Sanskrit verses referenced the Kruti Dev font without embedding it | On computers without that font those lines showed as Latin junk (`ifjp; izLrqfr`). The real Kruti Dev font (published by NIOS itself on the page above) was embedded into the PDF, so the text now renders exactly as intended (`परिचय प्रस्तुति`). No text was retyped or converted. |
 | **Smaller for printing** | Image-heavy PDFs | Images above 300 dpi were reduced to 220 dpi (JPEG q80) so files print sharply but are lighter. Text and layout unchanged. |
 
-Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Two NIOS links were
-dead (HTTP 404) when this was collected: Vijnana B English chapter 11 and Veda C Sanskrit chapter 6. Found an error? Please [open an issue](../../issues).
+Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Five NIOS links were dead when this was collected (they 404 or serve a web page instead of a PDF), so they are not mirrored: Vijnana B English chapter 11, Veda C Sanskrit chapter 6, and the Vocational Skills question papers for Levels A, B and C. Found an error? Please [open an issue](../../issues).
 
 ## Printing tips
 
