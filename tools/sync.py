@@ -52,7 +52,7 @@ def norm(h):
     u = urllib.parse.urljoin(BASE + "/", h)
     if u.count("/media/documents/") > 1:  # NIOS typo: duplicated path
         u = BASE + "/media/documents/" + u.split("/media/documents/")[-1]
-    return urllib.parse.quote(u, safe=":/%?=&")
+    return urllib.parse.quote(u, safe=":/%?=")  # "&" in a file name must be %26
 
 
 MAIN_PDF = re.compile(r"(?i)(Aleveleng|Bleveleng|Cleveleng|ENGAlevel|EngBlevel|engClevel|Level_[ABC]-2023|/[abc]-level)\.pdf$")
@@ -163,6 +163,10 @@ def process_one(args):
     with open(raw, "wb") as o:
         for chunk in r.iter_content(chunk_size=1 << 20):
             o.write(chunk)
+    with open(raw, "rb") as fh:
+        if fh.read(5) != b"%PDF-":  # an error/redirect page saved as .pdf must never reach the repo
+            os.remove(raw)
+            return rel, None
     a = os.path.getsize(raw)
     tmp, fixed = raw + ".out.pdf", 0
     try:
@@ -336,6 +340,8 @@ def main():
         with cf.ProcessPoolExecutor(a.jobs) as ex:
             for rel, info in ex.map(process_one, [(i["url"], i["rel"], work, fonts, repo) for i in todo]):
                 it = next(i for i in todo if i["rel"] == rel)
+                if info is None:
+                    print("WARN not a PDF, skipped:", it["url"]); continue
                 old = man.get(it["url"])
                 if old and old["rel"] != rel and not old["release"]:  # moved on the site: drop the old copy
                     op = os.path.join(repo, *old["rel"].split("/"))
