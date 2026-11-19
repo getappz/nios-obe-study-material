@@ -1511,12 +1511,13 @@
  },
  "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_A.pdf": {
   "asset": null,
+  "fixed_fonts": 0,
   "label": "Sample Question Paper and Masking Scheme",
   "rel": "indian-knowledge-tradition/level-a/vocational-skills-a149/common/SQP___MS_Vocational_Skills_Level_A.pdf",
   "release": false,
-  "sig": "|132753|",
+  "sig": "|30712|",
   "size": 132753,
-  "updated": "2026-11-19T08:22:23Z",
+  "updated": "2026-11-19T08:43:47Z",
   "url": "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_A.pdf"
  },
  "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_A/Vocational_Skills/sanskrit/Initial_pages_Sanskrit_Voc-A.pdf": {
@@ -3331,12 +3332,13 @@
  },
  "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_B.pdf": {
   "asset": null,
+  "fixed_fonts": 0,
   "label": "Question Paper Design and Sample Question paper with MS.",
   "rel": "indian-knowledge-tradition/level-b/vocational-skills-b149/common/SQP___MS_Vocational_Skills_Level_B.pdf",
   "release": false,
-  "sig": "|132753|",
+  "sig": "|30714|",
   "size": 132753,
-  "updated": "2026-11-19T08:22:23Z",
+  "updated": "2026-11-19T08:43:47Z",
   "url": "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_B.pdf"
  },
  "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_B/Vocational_Skills/VOC_Sanskrit_B/Initial_pages_Sanskrit_Voc-B.pdf": {
@@ -5191,12 +5193,13 @@
  },
  "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_C.pdf": {
   "asset": null,
+  "fixed_fonts": 0,
   "label": "Question Paper Design and Sample Question paper with MS.",
   "rel": "indian-knowledge-tradition/level-c/vocational-skills-c149/common/SQP___MS_Vocational_Skills_Level_C.pdf",
   "release": false,
-  "sig": "|132753|",
+  "sig": "|30715|",
   "size": 132753,
-  "updated": "2026-11-19T08:22:23Z",
+  "updated": "2026-11-19T08:43:47Z",
   "url": "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/SQP_&_MS_Vocational_Skills_Level_C.pdf"
  },
  "https://nios.ac.in/media/documents/OBE_indian_knowledge_tradition/Level_C/Vocational_Skills/sanskrit/Initial_pages_Sanskrit_Voc-C.pdf": {
