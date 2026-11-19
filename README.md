@@ -8,8 +8,11 @@ study material — 578 PDFs, laid out the same way as the NIOS page
 > **This is NIOS material, not ours.** © The National Institute of Open Schooling. Every row below links back to the
 > original on nios.ac.in. Check the NIOS site for the latest official editions.
 
-> 🕒 **Last checked against NIOS: 2026-11-19 08:53 UTC** · **Newest file change: 2026-11-19 08:22 UTC**  
+> 🕒 **Last checked against NIOS: 2026-11-19 09:33 UTC** · **Newest file change: 2026-11-19 08:22 UTC**  
 > If the check date is recent, this mirror matches the NIOS page. It is refreshed by the maintainer running the [sync script](tools/sync.py) (see *Updating*) — always compare with the official NIOS site for the latest edition.
+
+### 🌐 [Search, add to a list and download in one go →](https://getappz.github.io/nios-obe-study-material/)
+A small website for this repo: search by subject/level/medium, add files to a download list (like a cart), download them all at once, or share the list on WhatsApp.
 
 **Quick jump:** [English Medium](#english-medium) · [Hindi Medium](#hindi-medium) ·
 [Indian Knowledge Tradition](#indian-knowledge-tradition-भारतीय-ज्ञान-परम्परा) ·
