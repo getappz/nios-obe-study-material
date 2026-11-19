@@ -1,0 +1,19 @@
+[tools]
+python = "3.12"
+uv = "latest"
+
+# uv builds an isolated environment with the sync dependencies on first run (cached afterwards).
+[env]
+SYNC = "uv run --no-project --with pymupdf --with curl_cffi python tools/sync.py"
+
+[tasks."sync:check"]
+description = "Show what changed on nios.ac.in since the last sync (no downloads, no changes)"
+run = "{{env.SYNC}} --dry-run"
+
+[tasks.sync]
+description = "Sync NIOS PDFs: re-process changes, upload 10 MB+ files to the release, update README, commit and push"
+run = "{{env.SYNC}} --publish"
+
+[tasks."sync:force"]
+description = "Re-process every PDF (even if NIOS reports no change), then publish"
+run = "{{env.SYNC}} --force --publish"
