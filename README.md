@@ -8,6 +8,9 @@ study material — 581 PDFs, laid out the same way as the NIOS page
 > **This is NIOS material, not ours.** © The National Institute of Open Schooling. Every row below links back to the
 > original on nios.ac.in. Check the NIOS site for the latest official editions.
 
+> 🕒 **Last checked against NIOS: 2026-11-19 08:22 UTC** · **Newest file change: 2026-11-19 08:22 UTC**  
+> If the check date is recent, this mirror matches the NIOS page. It is refreshed by a manually run [workflow](../../actions/workflows/sync.yml) — always compare with the official NIOS site for the latest edition.
+
 **Quick jump:** [English Medium](#english-medium) · [Hindi Medium](#hindi-medium) ·
 [Indian Knowledge Tradition](#indian-knowledge-tradition-भारतीय-ज्ञान-परम्परा) ·
 [Question papers](#sample-question-papers--question-paper-design) · [What was changed](#what-was-changed-from-the-nios-originals) ·
@@ -426,7 +429,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 </details>
 
-<details><summary><b>Vijnana (B146)</b> — 25 files · <a href="indian-knowledge-tradition/level-b/vijnana-b146/">browse folder</a></summary>
+<details><summary><b>Vijnana (B146)</b> — 24 files · <a href="indian-knowledge-tradition/level-b/vijnana-b146/">browse folder</a></summary>
 
 **Hindi**
 
@@ -614,7 +617,7 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 ### Level C (Class 6–8)
 
-<details><summary><b>Veda (C145)</b> — 58 files · <a href="indian-knowledge-tradition/level-c/veda-c145/">browse folder</a></summary>
+<details><summary><b>Veda (C145)</b> — 57 files · <a href="indian-knowledge-tradition/level-c/veda-c145/">browse folder</a></summary>
 
 **All / mixed**
 
@@ -893,14 +896,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 | Level | Download | Size | Source |
 |---|---|---|---|
-| Level B — OBE-B_Level_SQP_MS_QPD.pdf | [PDF](open-basic-education/sample-question-papers/level-b/OBE-B_Level_SQP_MS_QPD.pdf) | 215 KB | [NIOS](https://nios.ac.in/media/documents/OBE_SLM/OBE-B_Level_SQP_MS_QPD.pdf) |
-| Level C — OBE-C_Level_SQP_MS_QPD.pdf | [PDF](open-basic-education/sample-question-papers/level-c/OBE-C_Level_SQP_MS_QPD.pdf) | 225 KB | [NIOS](https://nios.ac.in/media/documents/OBE_SLM/OBE-C_Level_SQP_MS_QPD.pdf) |
-| Level A — Level_A-2023.pdf | [PDF](open-basic-education/sample-question-papers/level-a/Level_A-2023.pdf) | 3.7 MB | [NIOS](https://nios.ac.in/media/documents/Level_A-2023.pdf) |
-| Level B — Level_B-2023.pdf | [PDF](open-basic-education/sample-question-papers/level-b/Level_B-2023.pdf) | 4.9 MB | [NIOS](https://nios.ac.in/media/documents/Level_B-2023.pdf) |
-| Level C — Level_C-2023.pdf | [PDF](open-basic-education/sample-question-papers/level-c/Level_C-2023.pdf) | 9.3 MB | [NIOS](https://nios.ac.in/media/documents/Level_C-2023.pdf) |
-| Level A — a-level.pdf | [PDF](open-basic-education/sample-question-papers/level-a/a-level.pdf) | 202 KB | [NIOS](https://nios.ac.in/media/documents/a-level.pdf) |
-| Level B — b-level.pdf | [PDF](open-basic-education/sample-question-papers/level-b/b-level.pdf) | 234 KB | [NIOS](https://nios.ac.in/media/documents/b-level.pdf) |
-| Level C — c-level.pdf | [PDF](open-basic-education/sample-question-papers/level-c/c-level.pdf) | 190 KB | [NIOS](https://nios.ac.in/media/documents/c-level.pdf) |
+| Level a — Level_A-2023.pdf | [PDF](open-basic-education/sample-question-papers/level-a/Level_A-2023.pdf) | 3.7 MB | [NIOS](https://nios.ac.in/media/documents/Level_A-2023.pdf) |
+| Level a — a-level.pdf | [PDF](open-basic-education/sample-question-papers/level-a/a-level.pdf) | 202 KB | [NIOS](https://nios.ac.in/media/documents/a-level.pdf) |
+| Level b — Level_B-2023.pdf | [PDF](open-basic-education/sample-question-papers/level-b/Level_B-2023.pdf) | 4.9 MB | [NIOS](https://nios.ac.in/media/documents/Level_B-2023.pdf) |
+| Level b — OBE-B_Level_SQP_MS_QPD.pdf | [PDF](open-basic-education/sample-question-papers/level-b/OBE-B_Level_SQP_MS_QPD.pdf) | 215 KB | [NIOS](https://nios.ac.in/media/documents/OBE_SLM/OBE-B_Level_SQP_MS_QPD.pdf) |
+| Level b — b-level.pdf | [PDF](open-basic-education/sample-question-papers/level-b/b-level.pdf) | 234 KB | [NIOS](https://nios.ac.in/media/documents/b-level.pdf) |
+| Level c — Level_C-2023.pdf | [PDF](open-basic-education/sample-question-papers/level-c/Level_C-2023.pdf) | 9.3 MB | [NIOS](https://nios.ac.in/media/documents/Level_C-2023.pdf) |
+| Level c — OBE-C_Level_SQP_MS_QPD.pdf | [PDF](open-basic-education/sample-question-papers/level-c/OBE-C_Level_SQP_MS_QPD.pdf) | 225 KB | [NIOS](https://nios.ac.in/media/documents/OBE_SLM/OBE-C_Level_SQP_MS_QPD.pdf) |
+| Level c — c-level.pdf | [PDF](open-basic-education/sample-question-papers/level-c/c-level.pdf) | 190 KB | [NIOS](https://nios.ac.in/media/documents/c-level.pdf) |
 
 
 ## What was changed from the NIOS originals
@@ -933,6 +936,7 @@ tools/    scripts used to prepare the PDFs (font embedding, image shrink)
 pip install pymupdf
 python tools/fix_krutidev.py in.pdf out.pdf <font-dir>   # embed Kruti Dev (font-dir: unzip NIOS's hindi_font_krutidev.zip)
 python tools/optimize.py in.pdf out.pdf                  # shrink images for print
+python tools/sync.py --repo . --work /tmp/work           # the full pipeline (what the workflow runs)
 ```
 
 Scripts are MIT-licensed; **the PDFs are not** (see below).
