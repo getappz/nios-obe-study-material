@@ -164,9 +164,10 @@ def process_one(args):
         for chunk in r.iter_content(chunk_size=1 << 20):
             o.write(chunk)
     with open(raw, "rb") as fh:
-        if fh.read(5) != b"%PDF-":  # an error/redirect page saved as .pdf must never reach the repo
-            os.remove(raw)
-            return rel, None
+        head = fh.read(5)
+    if head != b"%PDF-":  # an error/redirect page saved as .pdf must never reach the repo
+        os.remove(raw)
+        return rel, None
     a = os.path.getsize(raw)
     tmp, fixed = raw + ".out.pdf", 0
     try:
