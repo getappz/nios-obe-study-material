@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIOS OBE Study Material — search, pick, download</title>
+<meta name="description" content="Search NIOS Open Basic Education study material (Levels A–C, English/Hindi, Indian Knowledge Tradition), add files to a list and download them in one go.">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1b1f24;--mute:#5f6b7a;--line:#e1e5ea;--accent:#0b6b4f;--accent-ink:#fff;--chip:#eaf4f0;--warn:#8a5a00;--wa:#1faa59}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1318;--card:#171c23;--ink:#e8ebef;--mute:#9aa6b4;--line:#27303a;--accent:#3ec59a;--accent-ink:#06261c;--chip:#16302a;--warn:#e0b050;--wa:#2bd073}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif}
+a{color:var(--accent)}
+header{padding:20px 16px 8px;max-width:1180px;margin:0 auto}
+h1{margin:0 0 4px;font-size:1.5rem}
+header p{margin:0;color:var(--mute);font-size:.95rem}
+main{max-width:1180px;margin:0 auto;padding:8px 16px 120px;display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:920px){main{grid-template-columns:1fr 340px;padding-bottom:40px}}
+.filters{display:grid;gap:8px;grid-template-columns:1fr 1fr;margin-bottom:10px}
+.filters input{grid-column:1/-1}
+input,select,button{font:inherit;color:inherit}
+input[type=search],select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+button{cursor:pointer;border:1px solid var(--line);background:var(--card);padding:8px 12px;border-radius:10px}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+button.wa{background:var(--wa);border-color:var(--wa);color:#06210f;font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 10px;color:var(--mute);font-size:.9rem;flex-wrap:wrap}
+ul{list-style:none;margin:0;padding:0}
+.item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.item .t{font-weight:600}
+.meta{color:var(--mute);font-size:.82rem;margin-top:2px;word-break:break-word}
+.badge{display:inline-block;background:var(--chip);color:var(--accent);border-radius:999px;padding:0 8px;font-size:.75rem;margin-left:6px;vertical-align:1px}
+.badge.big{color:var(--warn)}
+.item .body{flex:1;min-width:0}
+.item .act{display:flex;gap:6px;flex-shrink:0}
+.item button{padding:6px 10px;font-size:.9rem}
+.item button.in{background:var(--chip);border-color:var(--accent);color:var(--accent)}
+aside{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;align-self:start}
+@media (min-width:920px){aside{position:sticky;top:16px}.mobileonly{display:none}}
+@media (max-width:919px){aside{position:fixed;left:8px;right:8px;bottom:8px;z-index:5;box-shadow:0 6px 28px #0006;max-height:70vh;overflow:auto}aside.collapsed .full{display:none}}
+aside h2{margin:0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
+.sum{color:var(--mute);font-size:.9rem;margin:4px 0 10px}
+.cartlist{max-height:240px;overflow:auto;margin:0 0 10px}
+.cartlist li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.cartlist button{padding:0 8px;line-height:1.4}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.row button{flex:1 1 auto}
+.note{font-size:.8rem;color:var(--mute);margin-top:8px}
+.banner{background:var(--chip);border:1px solid var(--accent);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+#status{min-height:1.2em;font-size:.88rem;color:var(--accent);margin-top:8px}
+footer{max-width:1180px;margin:0 auto;padding:0 16px 140px;color:var(--mute);font-size:.82rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 NIOS Open Basic Education — study material</h1>
+  <p>Unofficial mirror of NIOS material, with fonts fixed for printing. Search, add files to your list, download them all at once.
+     <a href="https://github.com/getappz/nios-obe-study-material#readme">README &amp; copyright</a></p>
+</header>
+<main>
+  <section aria-label="Search">
+    <div id="banner"></div>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search e.g. maths level c, yoga, veda chapter 3, इतिहास…" autocomplete="off" aria-label="Search files">
+      <select id="fMed" aria-label="Medium / programme"></select>
+      <select id="fLvl" aria-label="Level"></select>
+      <select id="fSub" aria-label="Subject" style="grid-column:1/-1"></select>
+    </div>
+    <div class="bar"><span id="count"></span><span><button id="addAll" type="button">＋ Add all results</button></span></div>
+    <ul id="list"></ul>
+    <p style="text-align:center"><button id="more" type="button" hidden>Show more</button></p>
+    <noscript>This page needs JavaScript. You can also browse the <a href="https://github.com/getappz/nios-obe-study-material">repository</a>.</noscript>
+  </section>
+
+  <aside id="cart" class="collapsed" aria-label="Download list">
+    <h2><span>🛒 My downloads (<span id="n">0</span>)</span><button id="toggle" type="button" class="mobileonly" aria-expanded="false">▲</button></h2>
+    <div class="sum" id="sum">Nothing added yet.</div>
+    <div class="full">
+      <ul class="cartlist" id="cartlist"></ul>
+      <div class="row">
+        <button id="dlAll" class="primary" type="button" disabled>⬇ Download all</button>
+        <button id="dlList" type="button" disabled>Download link list (.txt)</button>
+      </div>
+      <div class="row">
+        <button id="wa" class="wa" type="button" disabled>Share on WhatsApp</button>
+        <button id="copy" type="button" disabled>Copy link</button>
+        <button id="native" type="button" hidden disabled>Share…</button>
+      </div>
+      <div class="row"><button id="clear" type="button" disabled>Clear list</button></div>
+      <div id="status" role="status" aria-live="polite"></div>
+      <p class="note">“Download all” starts the downloads one after another — your browser may ask once to allow multiple downloads. Large files (marked ⬇ release) can be 50–140&nbsp;MB.
+        The share link contains your selection, so whoever opens it gets the same list.</p>
+    </div>
+  </aside>
+</main>
+<footer>© NIOS. Material reproduced under the <a href="https://nios.ac.in/terms-conditions.aspx">NIOS copyright statement</a>; this is an unofficial mirror. Always check <a href="https://nios.ac.in">nios.ac.in</a> for the latest edition.</footer>
+
+<script>
+const REL_BASE = "https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/";
+const PAGE_SIZE = 60;
+const SUBJ = {curriculum:"Curriculum",hindi:"Hindi",english:"English language",mathematics:"Mathematics",evs:"EVS",science:"Science","social-science":"Social Science","basic-computer-skills":"Basic Computer Skills","cutting-and-tailoring":"Cutting & Tailoring","earthworm-rearing":"Earthworm rearing","bhoti-language":"Bhoti language","bodh-darshan":"Bodh Darshan",veda:"Veda",vijnana:"Vijnana",yoga:"Yoga",sanskrit:"Sanskrit","vocational-skills":"Vocational Skills","question-papers":"Sample question papers"};
+const LVL = {a:"Level A (Class 1–3)",b:"Level B (Class 4–5)",c:"Level C (Class 6–8)"};
+const LANG = {hindi:"Hindi",sanskrit:"Sanskrit",english:"English",common:""};
+const $ = id => document.getElementById(id);
+const fmt = b => b >= 1e6 ? (b/1e6).toFixed(b >= 1e7 ? 0 : 1) + " MB" : Math.max(1, Math.round(b/1e3)) + " KB";
+const hash53 = s => { let h1=0xdeadbeef,h2=0x41c6ce57; for (let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)} h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(36)};
+const pretty = f => f.replace(/\.pdf$/i,"").replace(/[_-]+/g," ").trim();
+
+let items = [], byId = new Map(), cart = new Set(), shown = PAGE_SIZE, filtered = [];
+
+function parse(e) {
+  const p = e.rel.split("/"); let program, medium = "", level, subject, lang = "";
+  if (p[0] === "open-basic-education") {
+    program = "OBE";
+    if (p[1] === "sample-question-papers") { medium = "Question papers"; level = p[2].slice(6); subject = "question-papers"; }
+    else { medium = p[1] === "hindi-medium" ? "Hindi medium" : "English medium"; level = p[2].slice(6); subject = p[3]; }
+  } else {
+    program = "IKT"; medium = "Indian Knowledge Tradition"; level = p[1].slice(6);
+    subject = p[2].replace(/-[abc]14\d$/, ""); lang = LANG[p[3]] || "";
+  }
+  const file = p[p.length-1], subjName = SUBJ[subject] || subject;
+  let label = (e.label || "").replace(/\s*\(\d+ ?KB\)/,"").replace(/^Open Basic Education\s*/i,"").replace(/^[ABC][ -]?level\s*-?\s*/i,"").trim();
+  let title = program === "IKT" ? `${subjName} ${level.toUpperCase()} — ${label || pretty(file)}` : (label && label.toLowerCase() !== subjName.toLowerCase() ? `${subjName} — ${label}` : subjName);
+  if (e.rel.includes("sample-question")) title = `Sample question paper — ${pretty(file)}`;
+  const url = e.release ? REL_BASE + e.asset : encodeURI(e.rel);
+  return {id: hash53(e.rel), rel: e.rel, file, title, medium, level, subject, subjName, lang, size: e.size, release: !!e.release, url, program,
+          hay: [title, medium, LVL[level], "lvl" + level, subjName, lang, file, e.rel].join(" ").toLowerCase()};
+}
+
+function fillSelect(sel, label, values, fmtv) {
+  const cur = sel.value; sel.innerHTML = `<option value="">${label}</option>` + values.map(v => `<option value="${v}">${fmtv(v)}</option>`).join(""); if (values.includes(cur)) sel.value = cur;
+}
+function refreshFilters() {
+  fillSelect($("fMed"), "All media / programmes", [...new Set(items.map(i => i.medium))].sort(), v => v);
+  fillSelect($("fLvl"), "All levels", ["a","b","c"], v => LVL[v]);
+  const pool = items.filter(i => (!$("fMed").value || i.medium === $("fMed").value) && (!$("fLvl").value || i.level === $("fLvl").value));
+  fillSelect($("fSub"), "All subjects", [...new Set(pool.map(i => i.subject))].sort((a,b) => (SUBJ[a]||a).localeCompare(SUBJ[b]||b)), v => SUBJ[v] || v);
+}
+function applyFilters(resetPage = true) {
+  const toks = $("q").value.toLowerCase().replace(/\b(?:level|lvl)\s*([abc])\b/g, "lvl$1").split(/\s+/).filter(Boolean).map(w => w === "maths" ? "math" : w);
+  filtered = items.filter(i => (!$("fMed").value || i.medium === $("fMed").value) && (!$("fLvl").value || i.level === $("fLvl").value) &&
+    (!$("fSub").value || i.subject === $("fSub").value) && toks.every(t => i.hay.includes(t)));
+  if (resetPage) shown = PAGE_SIZE;
+  renderList();
+}
+function renderList() {
+  const part = filtered.slice(0, shown);
+  $("list").innerHTML = part.map(i => `<li class="item"><div class="body"><div class="t">${esc(i.title)}${i.lang ? `<span class="badge">${i.lang}</span>` : ""}${i.release ? `<span class="badge big">large</span>` : ""}</div>
+    <div class="meta">${esc(i.medium)} · ${LVL[i.level] || ""} · ${fmt(i.size)} · ${esc(i.file)}</div></div>
+    <div class="act"><button type="button" data-share="${i.id}" title="Share this file on WhatsApp" aria-label="Share ${esc(i.title)} on WhatsApp">↗</button>
+    <button type="button" data-add="${i.id}" class="${cart.has(i.id) ? "in" : ""}">${cart.has(i.id) ? "✓ Added" : "＋ Add"}</button></div></li>`).join("") || `<li class="meta">No files match.</li>`;
+  $("count").textContent = `${filtered.length} file${filtered.length === 1 ? "" : "s"}`;
+  $("more").hidden = filtered.length <= shown;
+  $("addAll").disabled = !filtered.length;
+}
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function save() { try { localStorage.setItem("nios-cart", JSON.stringify([...cart])); } catch {} }
+function renderCart() {
+  const sel = [...cart].map(id => byId.get(id)).filter(Boolean), total = sel.reduce((s,i) => s + i.size, 0);
+  $("n").textContent = sel.length;
+  $("sum").textContent = sel.length ? `${sel.length} file${sel.length === 1 ? "" : "s"} · ${fmt(total)}` : "Nothing added yet.";
+  $("cartlist").innerHTML = sel.map(i => `<li><span>${esc(i.title)}${i.lang ? " (" + i.lang + ")" : ""} <span class="meta">${fmt(i.size)}</span></span><button type="button" data-rm="${i.id}" aria-label="Remove ${esc(i.title)}">✕</button></li>`).join("");
+  for (const id of ["dlAll","dlList","wa","copy","native","clear"]) $(id).disabled = !sel.length;
+  renderList(); save();
+}
+const add = ids => { ids.forEach(id => byId.has(id) && cart.add(id)); renderCart(); };
+const shareLink = ids => `${location.origin}${location.pathname}#cart=${ids.join(",")}`;
+const waUrl = (text, link) => `https://wa.me/?text=${encodeURIComponent(text + "\n" + link)}`;
+const status = t => $("status").textContent = t;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+document.addEventListener("click", async ev => {
+  const b = ev.target.closest("button"); if (!b) return;
+  if (b.dataset.add) { cart.has(b.dataset.add) ? cart.delete(b.dataset.add) : cart.add(b.dataset.add); renderCart(); }
+  else if (b.dataset.rm) { cart.delete(b.dataset.rm); renderCart(); }
+  else if (b.dataset.share) { const i = byId.get(b.dataset.share); open(waUrl(`📚 NIOS study material: ${i.title} (${fmt(i.size)})`, shareLink([i.id])), "_blank", "noopener"); }
+});
+$("addAll").onclick = () => add(filtered.map(i => i.id));
+$("more").onclick = () => { shown += PAGE_SIZE; renderList(); };
+$("clear").onclick = () => { cart.clear(); renderCart(); status(""); };
+$("toggle").onclick = () => { const c = $("cart").classList.toggle("collapsed"); $("toggle").setAttribute("aria-expanded", String(!c)); $("toggle").textContent = c ? "▲" : "▼"; };
+["q"].forEach(id => $(id).addEventListener("input", () => applyFilters()));
+["fMed","fLvl"].forEach(id => $(id).addEventListener("change", () => { refreshFilters(); applyFilters(); }));
+$("fSub").addEventListener("change", () => applyFilters());
+
+$("dlAll").onclick = async () => {
+  const sel = [...cart].map(id => byId.get(id)).filter(Boolean); $("dlAll").disabled = true;
+  for (let k = 0; k < sel.length; k++) {
+    status(`Starting download ${k + 1} of ${sel.length}: ${sel[k].file}`);
+    const a = document.createElement("a"); a.href = sel[k].url; a.download = sel[k].file; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+    await sleep(900);
+  }
+  status(`All ${sel.length} downloads started — check your browser's downloads.`); $("dlAll").disabled = !cart.size;
+};
+$("dlList").onclick = () => {
+  const sel = [...cart].map(id => byId.get(id)).filter(Boolean);
+  const text = "# NIOS study material — download list (use with: wget -i nios-downloads.txt)\n" + sel.map(i => new URL(i.url, location.href).href).join("\n") + "\n";
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], {type: "text/plain"})); a.download = "nios-downloads.txt"; a.click(); URL.revokeObjectURL(a.href);
+};
+const cartMsg = () => { const sel = [...cart].map(id => byId.get(id)).filter(Boolean); return `📚 NIOS study material — ${sel.length} file${sel.length === 1 ? "" : "s"} (${fmt(sel.reduce((s,i) => s + i.size, 0))})`; };
+$("wa").onclick = () => open(waUrl(cartMsg(), shareLink([...cart])), "_blank", "noopener");
+$("copy").onclick = async () => { const l = shareLink([...cart]); try { await navigator.clipboard.writeText(l); status("Link copied."); } catch { prompt("Copy this link:", l); } };
+if (navigator.share) { $("native").hidden = false; $("native").onclick = () => navigator.share({title: "NIOS study material", text: cartMsg(), url: shareLink([...cart])}).catch(() => {}); }
+
+(async function init() {
+  try {
+    const m = await (await fetch("data/manifest.json", {cache: "no-cache"})).json();
+    items = Object.values(m).filter(e => !e.dead).map(parse).sort((a, b) => a.rel.localeCompare(b.rel));
+  } catch (e) { $("list").innerHTML = `<li class="meta">Could not load the file list (${esc(String(e))}). Browse the <a href="https://github.com/getappz/nios-obe-study-material">repository</a> instead.</li>`; return; }
+  items.forEach(i => byId.set(i.id, i));
+  try { JSON.parse(localStorage.getItem("nios-cart") || "[]").forEach(id => byId.has(id) && cart.add(id)); } catch {}
+  const shared = (location.hash.match(/^#cart=([\w,]+)/) || [])[1];
+  if (shared) { const ids = shared.split(",").filter(id => byId.has(id)); ids.forEach(id => cart.add(id));
+    $("banner").innerHTML = `<div class="banner">A shared list was opened: <b>${ids.length}</b> file${ids.length === 1 ? "" : "s"} added to your downloads. Press “Download all” on the right${innerWidth < 920 ? " (tap the bar at the bottom)" : ""}.</div>`;
+    if (innerWidth < 920) $("toggle").click(); history.replaceState(null, "", location.pathname); }
+  refreshFilters(); applyFilters(); renderCart();
+})();
+</script>
+</body>
+</html>
