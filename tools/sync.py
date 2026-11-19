@@ -214,6 +214,7 @@ def fmt(iso):
 
 def gen_readme(repo, man, tag, slugname):
     rel_url = f"https://github.com/{slugname}/releases/download/{tag}/"
+    man = {u: e for u, e in man.items() if not e.get("dead")}
 
     def link(e):
         return rel_url + e["asset"] if e["release"] else urllib.parse.quote(e["rel"], safe="/-_.~")
@@ -341,8 +342,11 @@ def main():
         with cf.ProcessPoolExecutor(a.jobs) as ex:
             for rel, info in ex.map(process_one, [(i["url"], i["rel"], work, fonts, repo) for i in todo]):
                 it = next(i for i in todo if i["rel"] == rel)
-                if info is None:
-                    print("WARN not a PDF, skipped:", it["url"]); continue
+                if info is None:  # NIOS link serves an HTML page, not a PDF: remember it so it is not retried every run
+                    print("WARN not a PDF (dead link), skipped:", it["url"])
+                    man[it["url"]] = {"url": it["url"], "label": it["label"], "rel": rel, "sig": it["sig"], "updated": now(),
+                                      "dead": True, "size": 0, "release": False, "asset": None}
+                    continue
                 old = man.get(it["url"])
                 if old and old["rel"] != rel and not old["release"]:  # moved on the site: drop the old copy
                     op = os.path.join(repo, *old["rel"].split("/"))

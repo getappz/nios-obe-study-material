@@ -29,8 +29,7 @@ Level guide (NIOS equivalence): **A** = Class 1–3 · **B** = Class 4–5 · **
 | **Kruti Dev font embedded** | Files whose headings / Sanskrit verses referenced the Kruti Dev font without embedding it | On computers without that font those lines showed as Latin junk (`ifjp; izLrqfr`). The real Kruti Dev font (published by NIOS itself on the page above) was embedded into the PDF, so the text now renders exactly as intended (`परिचय प्रस्तुति`). No text was retyped or converted. |
 | **Smaller for printing** | Image-heavy PDFs | Images above 300 dpi were reduced to 220 dpi (JPEG q80) so files print sharply but are lighter. Text and layout unchanged. |
 
-Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Two NIOS links were
-dead (HTTP 404) when this was collected: Vijnana B English chapter 11 and Veda C Sanskrit chapter 6. Found an error? Please [open an issue](../../issues).
+Content is otherwise unchanged. Scanned books (Science/Social Science, English medium) have no text layer. Five NIOS links were dead when this was collected (they 404 or serve a web page instead of a PDF), so they are not mirrored: Vijnana B English chapter 11, Veda C Sanskrit chapter 6, and the Vocational Skills question papers for Levels A, B and C. Found an error? Please [open an issue](../../issues).
 
 ## Printing tips
 
