@@ -4,9 +4,12 @@ Incremental: state lives in data/manifest.json (url, source signature, output pa
 re-processed. Files >= BIG bytes are written to <work>/release_stage (uploaded as GitHub Release assets by the workflow);
 the rest are written into the repository tree.
 
-  python tools/sync.py --repo . --work /tmp/work [--dry-run] [--force] [--only SUBSTR] [--bootstrap DIR]
+  python tools/sync.py [--dry-run] [--force] [--only SUBSTR] [--publish]
+
+--publish = after syncing: upload changed 10 MB+ files to the GitHub release, then commit and push (needs `gh` logged in).
+Run it from a machine that can reach nios.ac.in (GitHub-hosted runners cannot).
 """
-import argparse, concurrent.futures as cf, datetime, html, io, json, os, re, shutil, sys, time, urllib.parse, zipfile
+import argparse, concurrent.futures as cf, datetime, html, io, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.parse, zipfile
 
 import pymupdf
 from curl_cffi import requests
@@ -263,15 +266,38 @@ def gen_readme(repo, man, tag, slugname):
         .replace("{{CHECKED}}", fmt(now())))
 
 
+# ---------- publish ----------
+def sh(*cmd, cwd, check=True):
+    return subprocess.run(cmd, cwd=cwd, check=check, capture_output=True, text=True)
+
+
+def publish(repo, work, tag):
+    stage = os.path.join(work, "release_stage")
+    files = [os.path.join(stage, f) for f in os.listdir(stage)] if os.path.isdir(stage) else []
+    if files:
+        if sh("gh", "release", "view", tag, cwd=repo, check=False).returncode:
+            sh("gh", "release", "create", tag, "--title", "Large files (10 MB+)",
+               "--notes", "NIOS OBE PDFs of 10 MB or more. See the README for the index, sources and copyright notice.", cwd=repo)
+        for i in range(0, len(files), 8):  # batches keep each command line short
+            print("uploading", len(files[i:i + 8]), "release assets...", flush=True)
+            sh("gh", "release", "upload", tag, *files[i:i + 8], "--clobber", cwd=repo)
+        shutil.rmtree(stage)
+    sh("git", "add", "-A", cwd=repo)
+    if sh("git", "diff", "--cached", "--quiet", cwd=repo, check=False).returncode == 0:
+        print("nothing to commit"); return
+    sh("git", "commit", "-m", f"Sync NIOS study material ({datetime.date.today()})", cwd=repo)
+    print(sh("git", "push", "-u", "origin", "HEAD", cwd=repo).stderr.strip().splitlines()[-1])
+
+
 # ---------- main ----------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--repo", default="."); ap.add_argument("--work", default="/tmp/nios-work")
+    ap.add_argument("--repo", default="."); ap.add_argument("--work", default=os.path.join(tempfile.gettempdir(), "nios-work"))
     ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--force", action="store_true")
     ap.add_argument("--only", default=""); ap.add_argument("--tag", default="large-files-v1")
     ap.add_argument("--slug", default=os.environ.get("GITHUB_REPOSITORY", "getappz/nios-obe-study-material"))
     ap.add_argument("--bootstrap", help="dir holding existing release assets: build manifest from current files, no downloads")
-    ap.add_argument("--jobs", type=int, default=3)
+    ap.add_argument("--jobs", type=int, default=3); ap.add_argument("--publish", action="store_true")
     a = ap.parse_args()
     repo, work = os.path.abspath(a.repo), os.path.abspath(a.work)
     mpath = os.path.join(repo, "data", "manifest.json")
@@ -324,6 +350,8 @@ def main():
     gen_readme(repo, man, a.tag, a.slug)
     stage = os.path.join(work, "release_stage")
     print("release assets staged:", len(os.listdir(stage)) if os.path.isdir(stage) else 0)
+    if a.publish:
+        publish(repo, work, a.tag)
 
 
 if __name__ == "__main__":

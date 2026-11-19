@@ -9,7 +9,7 @@ study material — {{COUNT}} PDFs, laid out the same way as the NIOS page
 > original on nios.ac.in. Check the NIOS site for the latest official editions.
 
 > 🕒 **Last checked against NIOS: {{CHECKED}}** · **Newest file change: {{UPDATED}}**  
-> If the check date is recent, this mirror matches the NIOS page. It is refreshed by a manually run [workflow](../../actions/workflows/sync.yml) — always compare with the official NIOS site for the latest edition.
+> If the check date is recent, this mirror matches the NIOS page. It is refreshed by the maintainer running the [sync script](tools/sync.py) (see *Updating*) — always compare with the official NIOS site for the latest edition.
 
 **Quick jump:** [English Medium](#english-medium) · [Hindi Medium](#hindi-medium) ·
 [Indian Knowledge Tradition](#indian-knowledge-tradition-भारतीय-ज्ञान-परम्परा) ·
@@ -52,8 +52,22 @@ tools/    scripts used to prepare the PDFs (font embedding, image shrink)
 pip install pymupdf curl_cffi
 python tools/fix_krutidev.py in.pdf out.pdf <font-dir>   # embed Kruti Dev (font-dir: unzip NIOS's hindi_font_krutidev.zip)
 python tools/optimize.py in.pdf out.pdf                  # shrink images for print
-python tools/sync.py --repo . --work /tmp/work           # the full pipeline (what the workflow runs)
 ```
+
+## Updating (maintainer)
+
+NIOS blocks GitHub's hosted runners, so updates run on a machine that can reach nios.ac.in:
+
+```
+mise run sync:check     # what changed on NIOS since the last sync (compares ETag / size / date)
+mise run sync           # re-process changed PDFs, upload 10 MB+ files to the release, update this README, commit, push
+mise run sync:force     # re-process everything
+```
+
+Without mise: `python tools/sync.py --dry-run` / `--publish` / `--force --publish` (after `pip install pymupdf curl_cffi`).
+
+`python tools/sync.py --only Level_C` limits a run to URLs containing that text. State lives in `data/manifest.json`.
+Needs the [GitHub CLI](https://cli.github.com/) logged in for `--publish`.
 
 Scripts are MIT-licensed; **the PDFs are not** (see below).
 
