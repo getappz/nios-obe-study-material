@@ -6,9 +6,10 @@ the rest are written into the repository tree.
 
   python tools/sync.py --repo . --work /tmp/work [--dry-run] [--force] [--only SUBSTR] [--bootstrap DIR]
 """
-import argparse, concurrent.futures as cf, datetime, html, io, json, os, re, shutil, sys, urllib.parse, urllib.request, zipfile
+import argparse, concurrent.futures as cf, datetime, html, io, json, os, re, shutil, sys, time, urllib.parse, zipfile
 
 import pymupdf
+from curl_cffi import requests
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import fix_krutidev  # noqa: E402
@@ -17,17 +18,29 @@ BASE = "https://nios.ac.in"
 PAGE = BASE + "/departmentsunits/academic/open-basic-education-(obe)/obesimen.aspx"
 FONT_ZIP = BASE + "/media/documents/hindi_font_krutidev.zip"
 BIG = 10_000_000
-UA = {"User-Agent": "Mozilla/5.0 (nios-obe-study-material sync)"}
 pymupdf.TOOLS.mupdf_display_errors(False)
 
 
 # ---------- crawl ----------
-def fetch(u, head=False):
-    return urllib.request.urlopen(urllib.request.Request(u, headers=UA, method="HEAD" if head else "GET"), timeout=90)
+def fetch(u, head=False, stream=False, tries=3):
+    """HTTP GET/HEAD with a real-browser TLS fingerprint (curl_cffi, same approach as RivalSearchMCP/Scrapling):
+    nios.ac.in drops connections from plain python/urllib clients on cloud IPs. Retries with backoff."""
+    last = None
+    for n in range(tries):
+        try:
+            r = (requests.head if head else requests.get)(u, impersonate="chrome", timeout=60, allow_redirects=True,
+                                                          **({"stream": True} if stream else {}))
+            if r.status_code >= 400:
+                raise RuntimeError(f"HTTP {r.status_code}")
+            return r
+        except Exception as e:
+            last = e
+            time.sleep(2 * (n + 1))
+    raise last
 
 
 def anchors(url):
-    t = fetch(url).read().decode("utf-8", "ignore")
+    t = fetch(url).content.decode("utf-8", "ignore")
     return [(html.unescape(h), re.sub(r"\s+", " ", re.sub("<[^>]+>", "", html.unescape(x))).strip())
             for h, x in re.findall(r'(?is)<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', t)]
 
@@ -66,7 +79,7 @@ def collect():
 
 def signature(url):
     try:
-        h = fetch(url, head=True).headers
+        h = fetch(url, head=True, tries=2).headers
         return f"{h.get('ETag', '')}|{h.get('Content-Length', '')}|{h.get('Last-Modified', '')}"
     except Exception:
         return None
@@ -132,7 +145,7 @@ def find_fonts(work):
     if not os.path.exists(os.path.join(d, "K010.TTF")):
         os.makedirs(d, exist_ok=True)
         want = ("K010.TTF", "Kruti Dev 010 Bold.ttf", "Kruti Dev 010 Italic.ttf", "Kruti Dev 010 Bold Italic.ttf")
-        with zipfile.ZipFile(io.BytesIO(fetch(FONT_ZIP).read())) as z:
+        with zipfile.ZipFile(io.BytesIO(fetch(FONT_ZIP).content)) as z:
             for i in z.infolist():
                 if i.filename.split("/")[-1] in want:
                     open(os.path.join(d, i.filename.split("/")[-1]), "wb").write(z.read(i))
@@ -143,8 +156,10 @@ def process_one(args):
     url, rel, work, fonts, repo = args
     raw = os.path.join(work, "raw", re.sub(r"\W", "_", rel))
     os.makedirs(os.path.dirname(raw), exist_ok=True)
-    with fetch(url) as r, open(raw, "wb") as o:
-        shutil.copyfileobj(r, o, 1 << 20)
+    r = fetch(url, stream=True)
+    with open(raw, "wb") as o:
+        for chunk in r.iter_content(chunk_size=1 << 20):
+            o.write(chunk)
     a = os.path.getsize(raw)
     tmp, fixed = raw + ".out.pdf", 0
     try:

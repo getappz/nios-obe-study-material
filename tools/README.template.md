@@ -49,7 +49,7 @@ tools/    scripts used to prepare the PDFs (font embedding, image shrink)
 ## Tools
 
 ```
-pip install pymupdf
+pip install pymupdf curl_cffi
 python tools/fix_krutidev.py in.pdf out.pdf <font-dir>   # embed Kruti Dev (font-dir: unzip NIOS's hindi_font_krutidev.zip)
 python tools/optimize.py in.pdf out.pdf                  # shrink images for print
 python tools/sync.py --repo . --work /tmp/work           # the full pipeline (what the workflow runs)
