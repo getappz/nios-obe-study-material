@@ -265,11 +265,17 @@ def gen_readme(repo, man, tag, slugname):
         if "/sample-question-papers/" in e["rel"]:
             w(f"| {e['rel'].split('/')[2].replace('level-', 'Level ')} — {os.path.basename(e['rel'])} | [PDF]({link(e)}) | {size(e)} | [NIOS]({e['url']}) |")
     w("")
+    checked, updated = fmt(now()), fmt(max((e.get("updated", "") for e in man.values()), default=""))
     tpl = open(os.path.join(repo, "tools", "README.template.md"), encoding="utf-8").read()
     open(os.path.join(repo, "README.md"), "w", encoding="utf-8", newline="\n").write(
-        tpl.replace("{{COUNT}}", str(len(man))).replace("{{SRC}}", PAGE).replace("{{TABLES}}", "\n".join(out)).replace("{{TAG}}", tag)
-        .replace("{{UPDATED}}", fmt(max((e.get("updated", "") for e in man.values()), default="")))
-        .replace("{{CHECKED}}", fmt(now())))
+        tpl.replace("{{COUNT}}", str(len(man))).replace("{{SRC}}", PAGE).replace("{{TAG}}", tag)
+        .replace("{{UPDATED}}", updated).replace("{{CHECKED}}", checked))
+    owner, name = slugname.split("/")
+    head = (f"# Index of all files\n\n[← Back to the README](README.md) · [Search & download site](https://{owner}.github.io/{name}/)\n\n"
+            f"Last checked against NIOS: **{checked}** · newest file change: **{updated}**\n\n"
+            f"**⬇ = large file (10 MB+), hosted as a [GitHub Release asset](../../releases/tag/{tag})**; everything else is stored in the "
+            "repository folders. Level guide: **A** = Class 1–3 · **B** = Class 4–5 · **C** = Class 6–8.\n\n")
+    open(os.path.join(repo, "INDEX.md"), "w", encoding="utf-8", newline="\n").write(head + "\n".join(out))
 
 
 # ---------- publish ----------
