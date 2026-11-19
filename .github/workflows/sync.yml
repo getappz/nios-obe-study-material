@@ -46,7 +46,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install pymupdf
+        run: pip install pymupdf curl_cffi
 
       - name: Dry run (list changes only)
         if: ${{ inputs.dry_run }}
