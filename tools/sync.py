@@ -241,17 +241,25 @@ def gen_readme(repo, man, tag, slugname):
                 w(f"| **{s}** | [PDF]({link(e)}) | {size(e)} | [NIOS original]({e['url']}) |")
             w("")
     w("## Indian Knowledge Tradition (भारतीय ज्ञान परम्परा)\n")
-    w("Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published as chapter PDFs, in Hindi and/or Sanskrit/English.\n")
+    w("Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published as chapter PDFs (and combined complete-book PDFs), in Hindi and/or Sanskrit/English.\n")
     ikt = [e for e in E if e["rel"].startswith("indian-knowledge-tradition/")]
+    comb = [e for e in E if e["rel"].startswith("combined/")]
     for lv in "abc":
         w(f"### {LEVEL[lv]}\n")
         for code, subj in (("145", "veda"), ("146", "vijnana"), ("147", "yoga"), ("148", "sanskrit"), ("149", "vocational-skills")):
             base = f"indian-knowledge-tradition/level-{lv}/{subj}-{lv}{code}/"
             items = [e for e in ikt if e["rel"].startswith(base)]
+            citems = [e for e in comb if e["rel"].startswith(f"combined/level-{lv}/{subj}-{lv}{code}-")]
             if not items:
                 continue
             w(f'<details><summary><b>{SUBJ_NAME[subj]} ({lv.upper()}{code})</b> — {len(items)} files · '
               f'<a href="{urllib.parse.quote(base)}">browse folder</a></summary>\n')
+            if citems:
+                w("**Complete books (combined)**\n")
+                w("| File | Size |\n|---|---|")
+                for e in citems:
+                    w(f"| [{os.path.basename(e['rel'])}]({link(e)}) | {size(e)} |")
+                w("")
             for lg in sorted({e["rel"][len(base):].split("/")[0] for e in items}, key=list(LANG).index):
                 w(f"**{LANG[lg]}**\n")
                 w("| File | Size | Source |\n|---|---|---|")
@@ -336,7 +344,7 @@ def main():
             continue
         if a.force or not old or (not old.get("dead") and (old["sig"] != sig or old["rel"] != it["rel"])):
             todo.append(it)
-    gone = [u for u in man if u not in {i["url"] for i in items}]
+    gone = [u for u in man if u not in {i["url"] for i in items} and not man[u].get("combined")]
     print(f"to (re)process: {len(todo)} | unavailable now: {len(unavailable)} | no longer listed: {len(gone)}")
     for it in todo[:60]:
         print("  ", "NEW" if it["url"] not in man else "CHG", it["rel"])
