@@ -2,7 +2,7 @@
 
 [← Back to the README](README.md) · [Search & download site](https://getappz.github.io/nios-obe-study-material/)
 
-Last checked against NIOS: **2026-11-19 09:42 UTC** · newest file change: **2026-11-19 08:22 UTC**
+Last checked against NIOS: **2026-11-27 10:01 UTC** · newest file change: **2026-11-27 10:00 UTC**
 
 **⬇ = large file (10 MB+), hosted as a [GitHub Release asset](../../releases/tag/large-files-v1)**; everything else is stored in the repository folders. Level guide: **A** = Class 1–3 · **B** = Class 4–5 · **C** = Class 6–8.
 
@@ -80,11 +80,19 @@ Last checked against NIOS: **2026-11-19 09:42 UTC** · newest file change: **202
 
 ## Indian Knowledge Tradition (भारतीय ज्ञान परम्परा)
 
-Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published as chapter PDFs, in Hindi and/or Sanskrit/English.
+Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published as chapter PDFs (and combined complete-book PDFs), in Hindi and/or Sanskrit/English.
 
 ### Level A (Class 1–3)
 
 <details><summary><b>Veda (A145)</b> — 37 files · <a href="indian-knowledge-tradition/level-a/veda-a145/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [veda-a145-common.pdf](combined/level-a/veda-a145-common.pdf) | 6.1 MB |
+| [veda-a145-hindi.pdf](combined/level-a/veda-a145-hindi.pdf) | 4.8 MB |
+| [veda-a145-sanskrit.pdf](combined/level-a/veda-a145-sanskrit.pdf) | 4.1 MB |
 
 **All / mixed**
 
@@ -142,6 +150,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 <details><summary><b>Vijnana (A146)</b> — 36 files · <a href="indian-knowledge-tradition/level-a/vijnana-a146/">browse folder</a></summary>
 
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [vijnana-a146-english.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-a__vijnana-a146-english.pdf) | 20 MB ⬇ |
+| [vijnana-a146-hindi.pdf](combined/level-a/vijnana-a146-hindi.pdf) | 7.4 MB |
+| [vijnana-a146-sanskrit.pdf](combined/level-a/vijnana-a146-sanskrit.pdf) | 7.8 MB |
+
 **Hindi**
 
 | File | Size | Source |
@@ -196,6 +212,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 </details>
 
 <details><summary><b>Yoga (A147)</b> — 40 files · <a href="indian-knowledge-tradition/level-a/yoga-a147/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [yoga-a147-common.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-a__yoga-a147-common.pdf) | 12 MB ⬇ |
+| [yoga-a147-hindi.pdf](combined/level-a/yoga-a147-hindi.pdf) | 5.9 MB |
+| [yoga-a147-sanskrit.pdf](combined/level-a/yoga-a147-sanskrit.pdf) | 6.2 MB |
 
 **All / mixed**
 
@@ -256,6 +280,12 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 <details><summary><b>Sanskrit (A148)</b> — 14 files · <a href="indian-knowledge-tradition/level-a/sanskrit-a148/">browse folder</a></summary>
 
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [sanskrit-a148-common.pdf](combined/level-a/sanskrit-a148-common.pdf) | 9.3 MB |
+
 **All / mixed**
 
 | File | Size | Source |
@@ -278,6 +308,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 </details>
 
 <details><summary><b>Vocational Skills (A149)</b> — 39 files · <a href="indian-knowledge-tradition/level-a/vocational-skills-a149/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [vocational-skills-a149-common.pdf](combined/level-a/vocational-skills-a149-common.pdf) | 5.6 MB |
+| [vocational-skills-a149-hindi.pdf](combined/level-a/vocational-skills-a149-hindi.pdf) | 5.9 MB |
+| [vocational-skills-a149-sanskrit.pdf](combined/level-a/vocational-skills-a149-sanskrit.pdf) | 6.3 MB |
 
 **All / mixed**
 
@@ -338,6 +376,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 ### Level B (Class 4–5)
 
 <details><summary><b>Veda (B145)</b> — 58 files · <a href="indian-knowledge-tradition/level-b/veda-b145/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [veda-b145-common.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-b__veda-b145-common.pdf) | 12 MB ⬇ |
+| [veda-b145-hindi.pdf](combined/level-b/veda-b145-hindi.pdf) | 9.0 MB |
+| [veda-b145-sanskrit.pdf](combined/level-b/veda-b145-sanskrit.pdf) | 6.6 MB |
 
 **All / mixed**
 
@@ -416,6 +462,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 <details><summary><b>Vijnana (B146)</b> — 24 files · <a href="indian-knowledge-tradition/level-b/vijnana-b146/">browse folder</a></summary>
 
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [vijnana-b146-english.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-b__vijnana-b146-english.pdf) | 17 MB ⬇ |
+| [vijnana-b146-hindi.pdf](combined/level-b/vijnana-b146-hindi.pdf) | 3.7 MB |
+| [vijnana-b146-sanskrit.pdf](combined/level-b/vijnana-b146-sanskrit.pdf) | 6.4 MB |
+
 **Hindi**
 
 | File | Size | Source |
@@ -458,6 +512,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 </details>
 
 <details><summary><b>Yoga (B147)</b> — 36 files · <a href="indian-knowledge-tradition/level-b/yoga-b147/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [yoga-b147-common.pdf](combined/level-b/yoga-b147-common.pdf) | 7.0 MB |
+| [yoga-b147-hindi.pdf](combined/level-b/yoga-b147-hindi.pdf) | 8.1 MB |
+| [yoga-b147-sanskrit.pdf](combined/level-b/yoga-b147-sanskrit.pdf) | 6.2 MB |
 
 **All / mixed**
 
@@ -514,6 +576,12 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 <details><summary><b>Sanskrit (B148)</b> — 20 files · <a href="indian-knowledge-tradition/level-b/sanskrit-b148/">browse folder</a></summary>
 
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [sanskrit-b148-common.pdf](combined/level-b/sanskrit-b148-common.pdf) | 9.0 MB |
+
 **All / mixed**
 
 | File | Size | Source |
@@ -542,6 +610,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 </details>
 
 <details><summary><b>Vocational Skills (B149)</b> — 39 files · <a href="indian-knowledge-tradition/level-b/vocational-skills-b149/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [vocational-skills-b149-common.pdf](combined/level-b/vocational-skills-b149-common.pdf) | 7.5 MB |
+| [vocational-skills-b149-hindi.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-b__vocational-skills-b149-hindi.pdf) | 13 MB ⬇ |
+| [vocational-skills-b149-sanskrit.pdf](combined/level-b/vocational-skills-b149-sanskrit.pdf) | 7.9 MB |
 
 **All / mixed**
 
@@ -602,6 +678,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 ### Level C (Class 6–8)
 
 <details><summary><b>Veda (C145)</b> — 57 files · <a href="indian-knowledge-tradition/level-c/veda-c145/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [veda-c145-common.pdf](combined/level-c/veda-c145-common.pdf) | 8.9 MB |
+| [veda-c145-hindi.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-c__veda-c145-hindi.pdf) | 56 MB ⬇ |
+| [veda-c145-sanskrit.pdf](combined/level-c/veda-c145-sanskrit.pdf) | 7.9 MB |
 
 **All / mixed**
 
@@ -679,6 +763,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 <details><summary><b>Vijnana (C146)</b> — 39 files · <a href="indian-knowledge-tradition/level-c/vijnana-c146/">browse folder</a></summary>
 
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [vijnana-c146-english.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-c__vijnana-c146-english.pdf) | 14 MB ⬇ |
+| [vijnana-c146-hindi.pdf](https://github.com/getappz/nios-obe-study-material/releases/download/large-files-v1/combined__level-c__vijnana-c146-hindi.pdf) | 15 MB ⬇ |
+| [vijnana-c146-sanskrit.pdf](combined/level-c/vijnana-c146-sanskrit.pdf) | 7.7 MB |
+
 **Hindi**
 
 | File | Size | Source |
@@ -736,6 +828,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 </details>
 
 <details><summary><b>Yoga (C147)</b> — 40 files · <a href="indian-knowledge-tradition/level-c/yoga-c147/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [yoga-c147-common.pdf](combined/level-c/yoga-c147-common.pdf) | 8.1 MB |
+| [yoga-c147-hindi.pdf](combined/level-c/yoga-c147-hindi.pdf) | 7.1 MB |
+| [yoga-c147-sanskrit.pdf](combined/level-c/yoga-c147-sanskrit.pdf) | 7.0 MB |
 
 **All / mixed**
 
@@ -796,6 +896,12 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 
 <details><summary><b>Sanskrit (C148)</b> — 14 files · <a href="indian-knowledge-tradition/level-c/sanskrit-c148/">browse folder</a></summary>
 
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [sanskrit-c148-common.pdf](combined/level-c/sanskrit-c148-common.pdf) | 5.6 MB |
+
 **All / mixed**
 
 | File | Size | Source |
@@ -818,6 +924,14 @@ Veda, Vijnana, Yoga, Sanskrit and Vocational Skills — each course is published
 </details>
 
 <details><summary><b>Vocational Skills (C149)</b> — 39 files · <a href="indian-knowledge-tradition/level-c/vocational-skills-c149/">browse folder</a></summary>
+
+**Complete books (combined)**
+
+| File | Size |
+|---|---|
+| [vocational-skills-c149-common.pdf](combined/level-c/vocational-skills-c149-common.pdf) | 7.7 MB |
+| [vocational-skills-c149-hindi.pdf](combined/level-c/vocational-skills-c149-hindi.pdf) | 7.6 MB |
+| [vocational-skills-c149-sanskrit.pdf](combined/level-c/vocational-skills-c149-sanskrit.pdf) | 7.9 MB |
 
 **All / mixed**
 

@@ -6,11 +6,11 @@
 
 Search by subject, level or medium → add files to your list (like a cart) → **download them all at once** or **share the list on WhatsApp**.
 
-- **578 PDFs** from [NIOS Open Basic Education](https://nios.ac.in/departmentsunits/academic/open-basic-education-(obe)/obesimen.aspx): Levels A, B, C (Class 1–8), English & Hindi medium, Indian Knowledge Tradition (Veda, Vijnana, Yoga, Sanskrit, Vocational Skills) and sample question papers.
+- **617 PDFs** from [NIOS Open Basic Education](https://nios.ac.in/departmentsunits/academic/open-basic-education-(obe)/obesimen.aspx): Levels A, B, C (Class 1–8), English & Hindi medium, Indian Knowledge Tradition (Veda, Vijnana, Yoga, Sanskrit, Vocational Skills) and sample question papers.
 - **Fonts fixed for printing.** Many NIOS PDFs show Hindi/Sanskrit headings and verses as junk (`ifjp; izLrqfr`) on computers without the Kruti Dev font. Here the font is embedded, so they print correctly (`परिचय प्रस्तुति`). Images were also reduced to 220 dpi so files are lighter.
 - **Organised exactly like the NIOS page**: Medium → Level → Subject.
 
-> 🕒 **Last checked against NIOS: 2026-11-19 09:42 UTC** · **Newest file change: 2026-11-19 08:22 UTC**
+> 🕒 **Last checked against NIOS: 2026-11-27 10:01 UTC** · **Newest file change: 2026-11-27 10:00 UTC**
 > Always compare with the [official NIOS site](https://nios.ac.in) for the latest edition.
 
 ## Browse the files

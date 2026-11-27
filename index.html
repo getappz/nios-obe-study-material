@@ -574,22 +574,26 @@ const ICO = {
 let items = [], byId = new Map(), cart = new Set(), shown = PAGE_SIZE, filtered = [];
 
 function parse(e) {
-  const p = e.rel.split("/"); let program, medium = "", level, subject, lang = "";
+  const p = e.rel.split("/"); let program, medium = "", level, subject, lang = "", combined = false;
   if (p[0] === "open-basic-education") {
     program = "OBE";
     if (p[1] === "sample-question-papers") { medium = "Question papers"; level = p[2].slice(6); subject = "question-papers"; }
     else { medium = p[1] === "hindi-medium" ? "Hindi medium" : "English medium"; level = p[2].slice(6); subject = p[3]; }
+  } else if (p[0] === "combined") {
+    program = "IKT"; medium = "Indian Knowledge Tradition"; level = p[1].slice(6); combined = true;
+    const m = p[2].match(/^(.+?)-[abc]14\d-(common|hindi|sanskrit|english)\.pdf$/);
+    subject = m ? m[1] : p[2]; lang = m ? (LANG[m[2]] || "") : "";
   } else {
     program = "IKT"; medium = "Indian Knowledge Tradition"; level = p[1].slice(6);
     subject = p[2].replace(/-[abc]14\d$/, ""); lang = LANG[p[3]] || "";
   }
   const file = p[p.length-1], subjName = SUBJ[subject] || subject;
   let label = (e.label || "").replace(/\s*\(\d+ ?KB\)/,"").replace(/^Open Basic Education\s*/i,"").replace(/^[ABC][ -]?level\s*-?\s*/i,"").trim();
-  let title = program === "IKT" ? `${subjName} ${level.toUpperCase()} — ${label || pretty(file)}` : (label && label.toLowerCase() !== subjName.toLowerCase() ? `${subjName} — ${label}` : subjName);
+  let title = combined ? `${subjName} ${level.toUpperCase()} — Complete book (combined)` : (program === "IKT" ? `${subjName} ${level.toUpperCase()} — ${label || pretty(file)}` : (label && label.toLowerCase() !== subjName.toLowerCase() ? `${subjName} — ${label}` : subjName));
   if (e.rel.includes("sample-question")) title = `Sample question paper — ${pretty(file)}`;
   const url = e.release ? REL_BASE + e.asset : encodeURI(e.rel);
-  return {id: hash53(e.rel), rel: e.rel, file, title, medium, level, subject, subjName, lang, size: e.size, release: !!e.release, url, program,
-          hay: [title, medium, LVL[level], "lvl" + level, subjName, lang, file, e.rel].join(" ").toLowerCase()};
+  return {id: hash53(e.rel), rel: e.rel, file, title, medium, level, subject, subjName, lang, combined, size: e.size, release: !!e.release, url, program,
+          hay: [title, medium, LVL[level], "lvl" + level, subjName, lang, combined ? "complete book combined" : "", file, e.rel].join(" ").toLowerCase()};
 }
 
 function fillSelect(sel, label, values, fmtv) {
@@ -624,7 +628,7 @@ function renderList() {
   const part = filtered.slice(0, shown);
   $("list").innerHTML = part.map(i => `<li class="item">
     <div class="body">
-      <div class="t"><span>${esc(i.title)}</span>${i.lang ? `<span class="badge">${i.lang}</span>` : ""}${i.release ? `<span class="badge big">large</span>` : ""}</div>
+      <div class="t"><span>${esc(i.title)}</span>${i.combined ? `<span class="badge">complete book</span>` : ""}${i.lang ? `<span class="badge">${i.lang}</span>` : ""}${i.release ? `<span class="badge big">large</span>` : ""}</div>
       <div class="meta"><span>${esc(i.medium)}</span><span>${LVL[i.level] || ""}</span><span>${fmt(i.size)}</span><span class="fname">${esc(i.file)}</span></div>
     </div>
     <div class="act">
